@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://brdndksoa8lft"]
 
 [ext_resource type="Texture2D" uid="uid://dcy3p77h8yoiy" path="res://assets/sprites/Npc_Idle_with_shadow.png" id="1_bihq0"]
+[ext_resource type="Script" uid="uid://cftw8dox506vh" path="res://scripts/DialogArea.cs" id="2_qev7g"]
+[ext_resource type="JSON" path="res://data/dialogs/semple_dialog.json" id="3_7ds2n"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qev7g"]
 atlas = ExtResource("1_bihq0")
@@ -98,7 +100,9 @@ animations = [{
 radius = 0.3
 height = 1.2
 
-[node name="Node3D" type="Node3D" unique_id=214218786]
+[sub_resource type="SphereShape3D" id="SphereShape3D_ucufk"]
+
+[node name="DefaultNpc" type="Node3D" unique_id=214218786]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1655050233]
 
@@ -115,3 +119,14 @@ autoplay = "idle_down"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=113045330]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
 shape = SubResource("CapsuleShape3D_leue7")
+
+[node name="DialogArea" type="Area3D" parent="." unique_id=1506072675]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("2_qev7g")
+DialogueFile = ExtResource("3_7ds2n")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DialogArea" unique_id=1496489119]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+shape = SubResource("SphereShape3D_ucufk")

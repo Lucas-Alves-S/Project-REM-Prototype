@@ -20,9 +20,12 @@ public partial class Player : CharacterBody3D
 	// Last non-zero move input on the ground plane. X = right, Y = toward the camera.
 	private Vector2 _facing = Vector2.Down;
 
+	private Area3D _interactionArea;
+
 	public override void _Ready()
 	{
 		_sprite = GetNode<AnimatedSprite3D>("Sprite");
+		_interactionArea = GetNode<Area3D>("%InteractionArea");
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -83,5 +86,31 @@ public partial class Player : CharacterBody3D
 		{
 			_sprite.Play(anim);
 		}
+	}
+
+	public override void _UnhandledInput(InputEvent @event)
+	{
+		if (!@event.IsActionPressed("interact")) return;
+		
+		Interactable nearest_interactable = null;
+		float nearest_distance = float.PositiveInfinity;
+		
+		foreach(Area3D area in _interactionArea.GetOverlappingAreas()) {
+			if (area is not Interactable candidate) continue;
+
+			float distance = GlobalPosition.DistanceSquaredTo(candidate.GlobalPosition);
+			if (distance < nearest_distance)
+			{
+				nearest_interactable = candidate;
+				nearest_distance = distance;
+			}
+		}
+
+		if(nearest_interactable != null)
+		{
+			nearest_interactable.Interact(this);
+			GetViewport().SetInputAsHandled();
+		}
+	
 	}
 }

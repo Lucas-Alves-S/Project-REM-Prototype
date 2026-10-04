@@ -363,6 +363,8 @@ animations = [{
 radius = 0.3
 height = 1.2
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_ucufk"]
+
 [node name="Player" type="CharacterBody3D" unique_id=416896536]
 script = ExtResource("2_script")
 
@@ -386,3 +388,13 @@ transform = Transform3D(0.9999999, 0, 0, 0, 0.696133, 0.7179127, 0, -0.7179127, 
 [node name="Camera3D" type="Camera3D" parent="CameraPivot" unique_id=153421445]
 projection = 1
 size = 10.0
+
+[node name="InteractionArea" type="Area3D" parent="." unique_id=397728711]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionArea" unique_id=561634360]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+shape = SubResource("SphereShape3D_ucufk")

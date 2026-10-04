@@ -1,0 +1,26 @@
+{
+    "sample_npc_interaction": {
+        "lines": [
+            {
+                "speaker": "default_npc",
+                "portrait": "Smile",
+                "text": "Hi!, im smiling"
+            },
+            {
+                "speaker": "player",
+                "portrait": "Thoughtfulness",
+                "text": "hmmmmm..."
+            },
+            {
+                "speaker": "default_npc",
+                "portrait": "Laughter",
+                "text": "Hahahaha!"
+            },
+            {
+                "speaker": "player",
+                "portrait": "Aggression",
+                "text": "#######!"
+            }
+        ]
+    }
+}
