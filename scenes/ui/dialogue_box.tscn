@@ -1,6 +1,36 @@
 [gd_scene format=3 uid="uid://co3rx5f7d14o7"]
 
-[node name="DialogueBox" type="Control" unique_id=1052495144]
+[ext_resource type="Script" path="res://scripts/DialogueBox.cs" id="1_script"]
+[ext_resource type="Resource" uid="uid://ctvmxggx2wha3" path="res://data/characters/default_npc.tres" id="2_npc"]
+[ext_resource type="Resource" uid="uid://8aufo3ilwk5w" path="res://data/characters/player.tres" id="3_player"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+content_margin_left = 160.0
+content_margin_top = 16.0
+content_margin_right = 24.0
+content_margin_bottom = 16.0
+bg_color = Color(0.05, 0.05, 0.1, 0.9)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[node name="DialogueBox" type="CanvasLayer" unique_id=1052495144]
+process_mode = 3
+layer = 10
+script = ExtResource("1_script")
+Characters = Dictionary[String, Resource]({
+"default_npc": ExtResource("2_npc"),
+"player": ExtResource("3_player")
+})
+
+[node name="Root" type="Control" parent="." unique_id=543550947]
+unique_name_in_owner = true
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -8,28 +38,53 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Root" type="Control" parent="." unique_id=543550947]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
 [node name="PanelContainer" type="PanelContainer" parent="Root" unique_id=2075577797]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 160.0
+offset_top = -190.0
+offset_right = -40.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Root/PanelContainer" unique_id=939821601]
 layout_mode = 2
+theme_override_constants/separation = 8
 
 [node name="SpeakerName" type="Label" parent="Root/PanelContainer/VBoxContainer" unique_id=974271261]
+unique_name_in_owner = true
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.85, 0.3, 1)
+theme_override_font_sizes/font_size = 24
+text = "Speaker"
 
 [node name="Text" type="RichTextLabel" parent="Root/PanelContainer/VBoxContainer" unique_id=2128187624]
+unique_name_in_owner = true
 layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 22
+text = "Dialogue text"
+scroll_active = false
+visible_characters_behavior = 1
 
 [node name="Portrait" type="TextureRect" parent="Root" unique_id=442329046]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = -328.0
+offset_right = 328.0
+offset_bottom = -8.0
+grow_vertical = 0
+mouse_filter = 2
 expand_mode = 1
-stretch_mode = 4
+stretch_mode = 5
