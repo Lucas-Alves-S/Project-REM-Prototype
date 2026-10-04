@@ -1,12 +1,46 @@
 [gd_resource type="Resource" script_class="CharacterData" format=3 uid="uid://ctvmxggx2wha3"]
 
-[ext_resource type="Script" uid="uid://bh4f3vfqkc8np" path="res://scripts/CharacterData.cs" id="1_bdmq7"]
-[ext_resource type="Texture2D" uid="uid://krujjv6ydrjp" path="res://assets/portraits/default_npc/Smile.png" id="1_h605k"]
+[ext_resource type="Script" uid="uid://bh4f3vfqkc8np" path="res://scripts/CharacterData.cs" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://c0xgx8bt1gqo" path="res://assets/portraits/default_npc/Aggression.png" id="2_portrait"]
+[ext_resource type="Texture2D" uid="uid://o8dl8vofa2kr" path="res://assets/portraits/default_npc/Astonishment.png" id="3_portrait"]
+[ext_resource type="Texture2D" uid="uid://cjj8mej1sepi4" path="res://assets/portraits/default_npc/Awkwardness.png" id="4_portrait"]
+[ext_resource type="Texture2D" uid="uid://lmm0i75368e6" path="res://assets/portraits/default_npc/Calm.png" id="5_portrait"]
+[ext_resource type="Texture2D" uid="uid://bff13lhwf7b6w" path="res://assets/portraits/default_npc/Cry.png" id="6_portrait"]
+[ext_resource type="Texture2D" uid="uid://b3l7sh2phgr7" path="res://assets/portraits/default_npc/Disgust.png" id="7_portrait"]
+[ext_resource type="Texture2D" uid="uid://dc4ojwom5hi4v" path="res://assets/portraits/default_npc/Doubt.png" id="8_portrait"]
+[ext_resource type="Texture2D" uid="uid://buk53l0l2f46w" path="res://assets/portraits/default_npc/Dscomfort.png" id="9_portrait"]
+[ext_resource type="Texture2D" uid="uid://c4kv2i8olcglw" path="res://assets/portraits/default_npc/Embarrassment.png" id="10_portrait"]
+[ext_resource type="Texture2D" uid="uid://b87vonu0xadte" path="res://assets/portraits/default_npc/Eye rolling.png" id="11_portrait"]
+[ext_resource type="Texture2D" uid="uid://b00kneos7tvmb" path="res://assets/portraits/default_npc/Fear.png" id="12_portrait"]
+[ext_resource type="Texture2D" uid="uid://sesvxdb5vl26" path="res://assets/portraits/default_npc/Laughter.png" id="13_portrait"]
+[ext_resource type="Texture2D" uid="uid://d2l24oigsim63" path="res://assets/portraits/default_npc/Sadness.png" id="14_portrait"]
+[ext_resource type="Texture2D" uid="uid://bdovdbhrslopc" path="res://assets/portraits/default_npc/Scream.png" id="15_portrait"]
+[ext_resource type="Texture2D" uid="uid://cexmtt2t7yv76" path="res://assets/portraits/default_npc/Skepticism.png" id="16_portrait"]
+[ext_resource type="Texture2D" uid="uid://krujjv6ydrjp" path="res://assets/portraits/default_npc/Smile.png" id="17_portrait"]
+[ext_resource type="Texture2D" uid="uid://e263g7crf02j" path="res://assets/portraits/default_npc/Talk.png" id="18_portrait"]
+[ext_resource type="Texture2D" uid="uid://bhk00jci3dws7" path="res://assets/portraits/default_npc/Thoughtfulness.png" id="19_portrait"]
 
 [resource]
-script = ExtResource("1_bdmq7")
+script = ExtResource("1_script")
 DisplayName = "Default NPC"
 Portraits = Dictionary[String, Texture2D]({
-"Smile": ExtResource("1_h605k")
+"Aggression": ExtResource("2_portrait"),
+"Astonishment": ExtResource("3_portrait"),
+"Awkwardness": ExtResource("4_portrait"),
+"Calm": ExtResource("5_portrait"),
+"Cry": ExtResource("6_portrait"),
+"Disgust": ExtResource("7_portrait"),
+"Doubt": ExtResource("8_portrait"),
+"Discomfort": ExtResource("9_portrait"),
+"Embarrassment": ExtResource("10_portrait"),
+"EyeRolling": ExtResource("11_portrait"),
+"Fear": ExtResource("12_portrait"),
+"Laughter": ExtResource("13_portrait"),
+"Sadness": ExtResource("14_portrait"),
+"Scream": ExtResource("15_portrait"),
+"Skepticism": ExtResource("16_portrait"),
+"Smile": ExtResource("17_portrait"),
+"Talk": ExtResource("18_portrait"),
+"Thoughtfulness": ExtResource("19_portrait")
 })
 metadata/_custom_type_script = "uid://bh4f3vfqkc8np"

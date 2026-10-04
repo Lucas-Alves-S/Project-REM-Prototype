@@ -126,7 +126,19 @@ collision_layer = 4
 collision_mask = 0
 script = ExtResource("2_qev7g")
 DialogueFile = ExtResource("3_7ds2n")
+ConversationId = "sample_npc_interaction"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DialogArea" unique_id=1496489119]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 shape = SubResource("SphereShape3D_ucufk")
+
+[node name="Prompt" type="Label3D" parent="DialogArea" unique_id=1873402215]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)
+visible = false
+billboard = 1
+no_depth_test = true
+render_priority = 10
+outline_render_priority = 9
+text = "F"
+font_size = 64
+outline_size = 16
