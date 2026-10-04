@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://cn313aagv68yc"]
+
+[ext_resource type="Script" uid="uid://dopr2jop3ktrt" path="res://scripts/MainMenu.cs" id="1_ekxnf"]
+[ext_resource type="Texture2D" uid="uid://cq588a0afi5bb" path="res://assets/static_images/darksness_devil.jpg" id="2_bqqt6"]
+[ext_resource type="PackedScene" uid="uid://dy2cfofenkk1c" path="res://scenes/main.tscn" id="2_wu84c"]
+
+[node name="MainMenu" type="Control" unique_id=390344548]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ekxnf")
+GameScene = ExtResource("2_wu84c")
+
+[node name="Background" type="TextureRect" parent="." unique_id=680684790]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_bqqt6")
+expand_mode = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="Background" unique_id=39209689]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 54.0
+offset_top = 67.0
+offset_right = -994.0
+offset_bottom = -546.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/CenterContainer" unique_id=1086956184]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Background/CenterContainer/VBoxContainer" unique_id=3003095]
+layout_mode = 2
+text = "PROJECT REM"
+
+[node name="PlayButton" type="Button" parent="Background/CenterContainer/VBoxContainer" unique_id=827557778]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Play :)"
