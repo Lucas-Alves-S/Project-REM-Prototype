@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://sesvxdb5vl26"
-path="res://.godot/imported/laughter.png-8af8f0fa02e9e86c24464f18bc9ae5e3.ctex"
+path="res://.godot/imported/Laughter.png-f3b85266472cc3a5c9bf9fbc561e541e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/portraits/default_npc/laughter.png"
-dest_files=["res://.godot/imported/laughter.png-8af8f0fa02e9e86c24464f18bc9ae5e3.ctex"]
+source_file="res://assets/portraits/default_npc/Laughter.png"
+dest_files=["res://.godot/imported/Laughter.png-f3b85266472cc3a5c9bf9fbc561e541e.ctex"]
 
 [params]
 
