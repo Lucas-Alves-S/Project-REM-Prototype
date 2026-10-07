@@ -21,7 +21,7 @@ public partial class Player : CharacterBody3D
 	private Vector2 _facing = Vector2.Down;
 
 	private Area3D _interactionArea;
-	private Interactable _focused;
+	private InteractionArea _focused;
 
 	public override void _Ready()
 	{
@@ -96,7 +96,7 @@ public partial class Player : CharacterBody3D
 
 		if (_focused != null)
 		{
-			_focused.Interact(this);
+			_focused.Target?.Interact(this);
 			GetViewport().SetInputAsHandled();
 		}
 	}
@@ -104,7 +104,7 @@ public partial class Player : CharacterBody3D
 	// Re-pick the nearest interactable every frame so only one prompt shows at a time.
 	private void UpdateFocus()
 	{
-		Interactable nearest = FindNearestInteractable();
+		InteractionArea nearest = FindNearestInteractable();
 		if (nearest == _focused) return;
 
 		if (IsInstanceValid(_focused)) _focused.SetFocused(false);
@@ -112,13 +112,13 @@ public partial class Player : CharacterBody3D
 		_focused = nearest;
 	}
 
-	private Interactable FindNearestInteractable()
+	private InteractionArea FindNearestInteractable()
 	{
-		Interactable nearest_interactable = null;
+		InteractionArea nearest_interactable = null;
 		float nearest_distance = float.PositiveInfinity;
 
 		foreach(Area3D area in _interactionArea.GetOverlappingAreas()) {
-			if (area is not Interactable candidate) continue;
+			if (area is not InteractionArea candidate) continue;
 
 			float distance = GlobalPosition.DistanceSquaredTo(candidate.GlobalPosition);
 			if (distance < nearest_distance)
