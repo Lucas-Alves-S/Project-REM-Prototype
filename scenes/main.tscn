@@ -2,12 +2,16 @@
 
 [ext_resource type="PackedScene" uid="uid://i5nx0scdxcum" path="res://scenes/player.tscn" id="1_player"]
 [ext_resource type="PackedScene" uid="uid://brdndksoa8lft" path="res://scenes/default_npc.tscn" id="2_0wfyh"]
+[ext_resource type="Texture2D" uid="uid://lfi5vr41sw4j" path="res://assets/textures/missing_texture.png" id="2_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://rjfettb5cunf" path="res://scenes/ambient/door.tscn" id="3_sugp2"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0a554"]
 size = Vector3(50, 0.2, 50)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bqqt6"]
 albedo_color = Color(0.737193, 0.7371929, 0.7371929, 1)
+albedo_texture = ExtResource("2_jyhfs")
+uv1_triplanar = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_0a554"]
 material = SubResource("StandardMaterial3D_bqqt6")
@@ -31,3 +35,6 @@ transform = Transform3D(0.70710677, 0.49999997, -0.49999997, 0, 0.70710677, 0.70
 
 [node name="NPC" parent="." unique_id=214218786 instance=ExtResource("2_0wfyh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4731421, 0.4632058, 3.354153)
+
+[node name="Door" parent="." unique_id=86469617 instance=ExtResource("3_sugp2")]
+transform = Transform3D(-0.35836795, 0, 0.93358046, 0, 1, 0, -0.93358046, 0, -0.35836795, -2.4999704, 0, -2.1752787)
