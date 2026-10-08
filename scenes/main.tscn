@@ -20,7 +20,6 @@ size = Vector3(50, 0.2, 50)
 [node name="Node3D" type="Node3D" unique_id=1920260077]
 
 [node name="Player" parent="." unique_id=234387349 instance=ExtResource("1_player")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
 
 [node name="Ground" type="StaticBody3D" parent="." unique_id=1811697525]
 
@@ -31,10 +30,12 @@ shape = SubResource("BoxShape3D_0a554")
 mesh = SubResource("BoxMesh_0a554")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2093492279]
-transform = Transform3D(0.70710677, 0.49999997, -0.49999997, 0, 0.70710677, 0.70710677, 0.70710677, -0.49999997, 0.49999997, 0, 7.6862645, 0)
+transform = Transform3D(0.6387678, 0.54404753, -0.54404753, 0, 0.7071067, 0.7071067, 0.76939946, -0.45167702, 0.45167702, 0, 7.6862645, 0)
+shadow_enabled = true
+shadow_blur = 0.621
 
 [node name="NPC" parent="." unique_id=214218786 instance=ExtResource("2_0wfyh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4731421, 0.4632058, 3.354153)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.473, 0, 3.354)
 
 [node name="Door" parent="." unique_id=86469617 instance=ExtResource("3_sugp2")]
 transform = Transform3D(-0.53755194, 0, 1.4003707, 0, 1.5, 0, -1.4003707, 0, -0.53755194, -2.4999704, 0, -2.1752787)
