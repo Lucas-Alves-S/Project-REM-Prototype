@@ -383,7 +383,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
 shape = SubResource("CapsuleShape3D_player")
 
 [node name="CameraPivot" type="Node3D" parent="." unique_id=446578681]
-transform = Transform3D(0.9999999, 0, 0, 0, 0.696133, 0.7179127, 0, -0.7179127, 0.696133, 0, 4.0203214, 4.4050756)
+transform = Transform3D(0.9999999, 0, 0, 0, 0.7986354, 0.6018149, 0, -0.6018149, 0.7986354, 0, 4.0203214, 4.4050756)
 
 [node name="Camera3D" type="Camera3D" parent="CameraPivot" unique_id=153421445]
 projection = 1
