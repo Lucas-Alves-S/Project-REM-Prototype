@@ -3,24 +3,20 @@
 [ext_resource type="Script" path="res://scripts/DialogueBox.cs" id="1_script"]
 [ext_resource type="Resource" uid="uid://ctvmxggx2wha3" path="res://data/characters/default_npc.tres" id="2_npc"]
 [ext_resource type="Resource" uid="uid://8aufo3ilwk5w" path="res://data/characters/player.tres" id="3_player"]
+[ext_resource type="Texture2D" path="res://assets/ui/continue_shard.svg" id="4_shard"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
-content_margin_left = 160.0
-content_margin_top = 16.0
-content_margin_right = 24.0
-content_margin_bottom = 16.0
-bg_color = Color(0.05, 0.05, 0.1, 0.9)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
+[sub_resource type="Gradient" id="G_dim"]
+offsets = PackedFloat32Array(0.35, 0.8)
+colors = PackedColorArray(0.0196, 0.0235, 0.0588, 0, 0.0196, 0.0235, 0.0588, 0.85)
 
-[node name="DialogueBox" type="CanvasLayer" unique_id=1052495144]
+[sub_resource type="GradientTexture2D" id="T_dim"]
+gradient = SubResource("G_dim")
+width = 4
+height = 256
+fill_from = Vector2(0, 0)
+fill_to = Vector2(0, 1)
+
+[node name="DialogueBox" type="CanvasLayer"]
 process_mode = 3
 layer = 10
 script = ExtResource("1_script")
@@ -29,7 +25,7 @@ Characters = Dictionary[String, Resource]({
 "player": ExtResource("3_player")
 })
 
-[node name="Root" type="Control" parent="." unique_id=543550947]
+[node name="Root" type="Control" parent="."]
 unique_name_in_owner = true
 layout_mode = 3
 anchors_preset = 15
@@ -37,54 +33,144 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="Root" unique_id=2075577797]
+[node name="Dim" type="TextureRect" parent="Root"]
 layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 160.0
-offset_top = -190.0
-offset_right = -40.0
-offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("T_dim")
+expand_mode = 1
+
+[node name="Stage" type="Control" parent="Root"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -960.0
+offset_top = -1080.0
+offset_right = 960.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Root/PanelContainer" unique_id=939821601]
-layout_mode = 2
-theme_override_constants/separation = 8
-
-[node name="SpeakerName" type="Label" parent="Root/PanelContainer/VBoxContainer" unique_id=974271261]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 0.85, 0.3, 1)
-theme_override_font_sizes/font_size = 24
-text = "Speaker"
-
-[node name="Text" type="RichTextLabel" parent="Root/PanelContainer/VBoxContainer" unique_id=2128187624]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_vertical = 3
 mouse_filter = 2
-theme_override_font_sizes/normal_font_size = 22
+
+[node name="Portrait" type="TextureRect" parent="Root/Stage"]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 0
+offset_left = 60.0
+offset_top = 488.0
+offset_right = 572.0
+offset_bottom = 1000.0
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Box" type="Polygon2D" parent="Root/Stage"]
+position = Vector2(480, 760)
+color = Color(0.0275, 0.0314, 0.0863, 0.84)
+polygon = PackedVector2Array(0, 0, 1360, 0, 1319, 250, 27, 250)
+
+[node name="BoxTopLine" type="ColorRect" parent="Root/Stage"]
+layout_mode = 0
+offset_left = 480.0
+offset_top = 760.0
+offset_right = 1840.0
+offset_bottom = 763.0
+mouse_filter = 2
+color = Color(0.1804, 0.949, 0.8784, 1)
+
+[node name="BoxBottomLine" type="ColorRect" parent="Root/Stage"]
+layout_mode = 0
+offset_left = 500.0
+offset_top = 1000.0
+offset_right = 1800.0
+offset_bottom = 1004.0
+mouse_filter = 2
+color = Color(1, 0.1804, 0.5333, 1)
+
+[node name="Header" type="HBoxContainer" parent="Root/Stage"]
+layout_mode = 0
+offset_left = 520.0
+offset_top = 712.0
+offset_right = 1400.0
+offset_bottom = 776.0
+mouse_filter = 2
+theme_override_constants/separation = 16
+
+[node name="NameTag" type="PanelContainer" parent="Root/Stage/Header"]
+layout_mode = 2
+size_flags_vertical = 8
+mouse_filter = 2
+theme_type_variation = &"NameTag"
+
+[node name="SpeakerName" type="Label" parent="Root/Stage/Header/NameTag"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"NameTagLabel"
+text = "[NAME]"
+
+[node name="SpeakerTitle" type="Label" parent="Root/Stage/Header"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 8
+theme_type_variation = &"TagLabel"
+theme_override_colors/font_color = Color(0.1804, 0.949, 0.8784, 1)
+theme_override_font_sizes/font_size = 20
+text = "THE DREAMER"
+
+[node name="Text" type="RichTextLabel" parent="Root/Stage"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 560.0
+offset_top = 806.0
+offset_right = 1740.0
+offset_bottom = 996.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.9608, 0.9529, 1, 1)
+theme_override_constants/line_separation = 14
+theme_override_font_sizes/normal_font_size = 34
+theme_override_font_sizes/bold_font_size = 34
+bbcode_enabled = true
 text = "Dialogue text"
 scroll_active = false
 visible_characters_behavior = 1
 
-[node name="Portrait" type="TextureRect" parent="Root" unique_id=442329046]
+[node name="ContinueShard" type="TextureRect" parent="Root/Stage"]
 unique_name_in_owner = true
-texture_filter = 1
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 8.0
-offset_top = -328.0
-offset_right = 328.0
-offset_bottom = -8.0
-grow_vertical = 0
+layout_mode = 0
+offset_left = 1740.0
+offset_top = 940.0
+offset_right = 1774.0
+offset_bottom = 974.0
+pivot_offset = Vector2(17, 17)
 mouse_filter = 2
-expand_mode = 1
-stretch_mode = 5
+texture = ExtResource("4_shard")
+
+[node name="ContinueHint" type="HBoxContainer" parent="Root/Stage"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 1600.0
+offset_top = 1030.0
+offset_right = 1860.0
+offset_bottom = 1058.0
+mouse_filter = 2
+theme_override_constants/separation = 10
+
+[node name="Key" type="Label" parent="Root/Stage/ContinueHint"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"KeyHint"
+theme_override_font_sizes/font_size = 18
+text = "F"
+
+[node name="Label" type="Label" parent="Root/Stage/ContinueHint"]
+layout_mode = 2
+theme_type_variation = &"TagLabel"
+text = "CONTINUE"

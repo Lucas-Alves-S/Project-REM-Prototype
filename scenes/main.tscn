@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://brdndksoa8lft" path="res://scenes/default_npc.tscn" id="2_0wfyh"]
 [ext_resource type="Texture2D" uid="uid://lfi5vr41sw4j" path="res://assets/textures/missing_texture.png" id="2_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://rjfettb5cunf" path="res://scenes/ambient/door.tscn" id="3_sugp2"]
+[ext_resource type="PackedScene" path="res://scenes/ui/inventory.tscn" id="4_inv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0a554"]
 size = Vector3(50, 0.2, 50)
@@ -39,3 +40,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.473, 0, 3.354)
 
 [node name="Door" parent="." unique_id=86469617 instance=ExtResource("3_sugp2")]
 transform = Transform3D(-0.53755194, 0, 1.4003707, 0, 1.5, 0, -1.4003707, 0, -0.53755194, -2.4999704, 0, -2.1752787)
+
+[node name="Inventory" parent="." instance=ExtResource("4_inv")]
