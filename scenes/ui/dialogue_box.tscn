@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://co3rx5f7d14o7"]
 
-[ext_resource type="Script" path="res://scripts/DialogueBox.cs" id="1_script"]
+[ext_resource type="Script" uid="uid://cvuoqopp71p74" path="res://scripts/ui/DialogueBox.cs" id="1_script"]
+[ext_resource type="Script" uid="uid://bh4f3vfqkc8np" path="res://scripts/CharacterData.cs" id="2_h44io"]
 [ext_resource type="Resource" uid="uid://ctvmxggx2wha3" path="res://data/characters/default_npc.tres" id="2_npc"]
 [ext_resource type="Resource" uid="uid://8aufo3ilwk5w" path="res://data/characters/player.tres" id="3_player"]
-[ext_resource type="Texture2D" path="res://assets/ui/continue_shard.svg" id="4_shard"]
+[ext_resource type="Texture2D" uid="uid://cyocewfssjuil" path="res://assets/ui/continue_shard.svg" id="4_shard"]
 
 [sub_resource type="Gradient" id="G_dim"]
 offsets = PackedFloat32Array(0.35, 0.8)
@@ -13,19 +14,18 @@ colors = PackedColorArray(0.0196, 0.0235, 0.0588, 0, 0.0196, 0.0235, 0.0588, 0.8
 gradient = SubResource("G_dim")
 width = 4
 height = 256
-fill_from = Vector2(0, 0)
 fill_to = Vector2(0, 1)
 
-[node name="DialogueBox" type="CanvasLayer"]
+[node name="DialogueBox" type="CanvasLayer" unique_id=655330598]
 process_mode = 3
 layer = 10
 script = ExtResource("1_script")
-Characters = Dictionary[String, Resource]({
+Characters = Dictionary[String, ExtResource("2_h44io")]({
 "default_npc": ExtResource("2_npc"),
 "player": ExtResource("3_player")
 })
 
-[node name="Root" type="Control" parent="."]
+[node name="Root" type="Control" parent="." unique_id=1389148522]
 unique_name_in_owner = true
 layout_mode = 3
 anchors_preset = 15
@@ -35,7 +35,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="Dim" type="TextureRect" parent="Root"]
+[node name="Dim" type="TextureRect" parent="Root" unique_id=501641163]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -46,7 +46,7 @@ mouse_filter = 2
 texture = SubResource("T_dim")
 expand_mode = 1
 
-[node name="Stage" type="Control" parent="Root"]
+[node name="Stage" type="Control" parent="Root" unique_id=434231313]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -60,7 +60,7 @@ grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
 
-[node name="Portrait" type="TextureRect" parent="Root/Stage"]
+[node name="Portrait" type="TextureRect" parent="Root/Stage" unique_id=1195566901]
 unique_name_in_owner = true
 texture_filter = 1
 layout_mode = 0
@@ -72,12 +72,12 @@ mouse_filter = 2
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Box" type="Polygon2D" parent="Root/Stage"]
+[node name="Box" type="Polygon2D" parent="Root/Stage" unique_id=1242187521]
 position = Vector2(480, 760)
 color = Color(0.0275, 0.0314, 0.0863, 0.84)
 polygon = PackedVector2Array(0, 0, 1360, 0, 1319, 250, 27, 250)
 
-[node name="BoxTopLine" type="ColorRect" parent="Root/Stage"]
+[node name="BoxTopLine" type="ColorRect" parent="Root/Stage" unique_id=1452809677]
 layout_mode = 0
 offset_left = 480.0
 offset_top = 760.0
@@ -86,7 +86,7 @@ offset_bottom = 763.0
 mouse_filter = 2
 color = Color(0.1804, 0.949, 0.8784, 1)
 
-[node name="BoxBottomLine" type="ColorRect" parent="Root/Stage"]
+[node name="BoxBottomLine" type="ColorRect" parent="Root/Stage" unique_id=1712804604]
 layout_mode = 0
 offset_left = 500.0
 offset_top = 1000.0
@@ -95,7 +95,7 @@ offset_bottom = 1004.0
 mouse_filter = 2
 color = Color(1, 0.1804, 0.5333, 1)
 
-[node name="Header" type="HBoxContainer" parent="Root/Stage"]
+[node name="Header" type="HBoxContainer" parent="Root/Stage" unique_id=1533587188]
 layout_mode = 0
 offset_left = 520.0
 offset_top = 712.0
@@ -104,19 +104,19 @@ offset_bottom = 776.0
 mouse_filter = 2
 theme_override_constants/separation = 16
 
-[node name="NameTag" type="PanelContainer" parent="Root/Stage/Header"]
+[node name="NameTag" type="PanelContainer" parent="Root/Stage/Header" unique_id=2125569812]
 layout_mode = 2
 size_flags_vertical = 8
 mouse_filter = 2
 theme_type_variation = &"NameTag"
 
-[node name="SpeakerName" type="Label" parent="Root/Stage/Header/NameTag"]
+[node name="SpeakerName" type="Label" parent="Root/Stage/Header/NameTag" unique_id=211613842]
 unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"NameTagLabel"
 text = "[NAME]"
 
-[node name="SpeakerTitle" type="Label" parent="Root/Stage/Header"]
+[node name="SpeakerTitle" type="Label" parent="Root/Stage/Header" unique_id=1858585513]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 8
@@ -125,7 +125,7 @@ theme_override_colors/font_color = Color(0.1804, 0.949, 0.8784, 1)
 theme_override_font_sizes/font_size = 20
 text = "THE DREAMER"
 
-[node name="Text" type="RichTextLabel" parent="Root/Stage"]
+[node name="Text" type="RichTextLabel" parent="Root/Stage" unique_id=397228215]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 560.0
@@ -142,7 +142,7 @@ text = "Dialogue text"
 scroll_active = false
 visible_characters_behavior = 1
 
-[node name="ContinueShard" type="TextureRect" parent="Root/Stage"]
+[node name="ContinueShard" type="TextureRect" parent="Root/Stage" unique_id=292800808]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 1740.0
@@ -153,7 +153,7 @@ pivot_offset = Vector2(17, 17)
 mouse_filter = 2
 texture = ExtResource("4_shard")
 
-[node name="ContinueHint" type="HBoxContainer" parent="Root/Stage"]
+[node name="ContinueHint" type="HBoxContainer" parent="Root/Stage" unique_id=505907624]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 1600.0
@@ -163,14 +163,14 @@ offset_bottom = 1058.0
 mouse_filter = 2
 theme_override_constants/separation = 10
 
-[node name="Key" type="Label" parent="Root/Stage/ContinueHint"]
+[node name="Key" type="Label" parent="Root/Stage/ContinueHint" unique_id=1205165638]
 unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"KeyHint"
 theme_override_font_sizes/font_size = 18
 text = "F"
 
-[node name="Label" type="Label" parent="Root/Stage/ContinueHint"]
+[node name="Label" type="Label" parent="Root/Stage/ContinueHint" unique_id=78931809]
 layout_mode = 2
 theme_type_variation = &"TagLabel"
 text = "CONTINUE"

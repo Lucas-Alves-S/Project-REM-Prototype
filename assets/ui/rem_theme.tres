@@ -1,33 +1,15 @@
-[gd_resource type="Theme" format=3]
+[gd_resource type="Theme" format=3 uid="uid://br0owq46fbx3c"]
 
-[ext_resource type="FontFile" path="res://assets/fonts/Barlow-Medium.ttf" id="1_body"]
-[ext_resource type="FontFile" path="res://assets/fonts/Barlow-Italic.ttf" id="2_body_italic"]
-[ext_resource type="FontFile" path="res://assets/fonts/BarlowCondensed-BlackItalic.ttf" id="3_display"]
-[ext_resource type="FontFile" path="res://assets/fonts/BarlowCondensed-ExtraBoldItalic.ttf" id="4_heading"]
-[ext_resource type="FontFile" path="res://assets/fonts/BarlowCondensed-Bold.ttf" id="5_label"]
-
-; Shear of 0.21 = tan(12deg). Applied on top of the italic files, like the
-; mockup's `font-style: italic` + `skewX(-12deg)`.
-[sub_resource type="FontVariation" id="FV_display"]
-base_font = ExtResource("3_display")
-spacing_glyph = -2
-variation_transform = Transform2D(1, 0.21, 0, 1, 0, 0)
+[ext_resource type="FontFile" uid="uid://clspg1wrc8eaf" path="res://assets/fonts/Barlow-Medium.ttf" id="1_body"]
+[ext_resource type="FontFile" uid="uid://dskjoh7o2l5l2" path="res://assets/fonts/Barlow-Italic.ttf" id="2_body_italic"]
+[ext_resource type="FontFile" uid="uid://chdqomwpyqgt2" path="res://assets/fonts/BarlowCondensed-BlackItalic.ttf" id="3_display"]
+[ext_resource type="FontFile" uid="uid://4qfojio23570" path="res://assets/fonts/BarlowCondensed-ExtraBoldItalic.ttf" id="4_heading"]
+[ext_resource type="FontFile" uid="uid://bdqoc838o4245" path="res://assets/fonts/BarlowCondensed-Bold.ttf" id="5_label"]
 
 [sub_resource type="FontVariation" id="FV_heading"]
 base_font = ExtResource("4_heading")
 variation_transform = Transform2D(1, 0.21, 0, 1, 0, 0)
 
-; Letter-spaced uppercase labels (tracking ~.2em).
-[sub_resource type="FontVariation" id="FV_tag"]
-base_font = ExtResource("5_label")
-spacing_glyph = 4
-
-[sub_resource type="FontVariation" id="FV_key"]
-base_font = ExtResource("5_label")
-spacing_glyph = 3
-variation_transform = Transform2D(1, 0.21, 0, 1, 0, 0)
-
-; ---------- Button (generic .rem-btn) ----------
 [sub_resource type="StyleBoxFlat" id="Btn_normal"]
 content_margin_left = 22.0
 content_margin_top = 6.0
@@ -53,9 +35,43 @@ shadow_color = Color(1, 0.1804, 0.5333, 1)
 shadow_size = 1
 shadow_offset = Vector2(8, 8)
 
-; ---------- MenuItem (title / pause) ----------
-; No shadow here: MenuItem.cs draws the two hard shadows as panels behind the
-; button, because StyleBoxFlat only has one (and a blurry one at that).
+[sub_resource type="FontVariation" id="FV_display"]
+base_font = ExtResource("3_display")
+variation_transform = Transform2D(1, 0.21, 0, 1, 0, 0)
+spacing_glyph = -2
+
+[sub_resource type="StyleBoxFlat" id="Equip_panel"]
+bg_color = Color(0.0275, 0.0314, 0.0863, 0.55)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.9608, 0.9529, 1, 0.08)
+corner_radius_bottom_left = 40
+corner_detail = 1
+
+[sub_resource type="StyleBoxLine" id="Divider"]
+color = Color(0.9608, 0.9529, 1, 0.12)
+thickness = 2
+
+[sub_resource type="FontVariation" id="FV_key"]
+base_font = ExtResource("5_label")
+variation_transform = Transform2D(1, 0.21, 0, 1, 0, 0)
+spacing_glyph = 3
+
+[sub_resource type="StyleBoxFlat" id="Key_box"]
+content_margin_left = 10.0
+content_margin_top = 0.0
+content_margin_right = 10.0
+content_margin_bottom = 0.0
+draw_center = false
+skew = Vector2(0.21, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.6627, 0.6824, 0.7608, 1)
+
 [sub_resource type="StyleBoxFlat" id="Menu_normal"]
 content_margin_left = 28.0
 content_margin_top = 8.0
@@ -72,40 +88,29 @@ content_margin_bottom = 10.0
 bg_color = Color(0.9608, 0.9529, 1, 1)
 skew = Vector2(0.21, 0)
 
-[sub_resource type="StyleBoxFlat" id="Menu_shadow_trauma"]
-bg_color = Color(1, 0.1804, 0.5333, 1)
-skew = Vector2(0.21, 0)
-
 [sub_resource type="StyleBoxFlat" id="Menu_shadow_magic"]
 bg_color = Color(0.1804, 0.949, 0.8784, 1)
 skew = Vector2(0.21, 0)
 
-; ---------- TabButton (inventory tabs) ----------
-[sub_resource type="StyleBoxFlat" id="Tab_selected"]
-content_margin_left = 22.0
+[sub_resource type="StyleBoxFlat" id="Menu_shadow_trauma"]
+bg_color = Color(1, 0.1804, 0.5333, 1)
+skew = Vector2(0.21, 0)
+
+[sub_resource type="StyleBoxFlat" id="NameTag_panel"]
+content_margin_left = 30.0
 content_margin_top = 6.0
-content_margin_right = 22.0
-content_margin_bottom = 6.0
+content_margin_right = 30.0
+content_margin_bottom = 4.0
 bg_color = Color(0.9608, 0.9529, 1, 1)
 skew = Vector2(0.21, 0)
 shadow_color = Color(1, 0.1804, 0.5333, 1)
 shadow_size = 1
-shadow_offset = Vector2(6, 6)
+shadow_offset = Vector2(8, 8)
 
-[sub_resource type="StyleBoxFlat" id="Tab_focus"]
-draw_center = false
-skew = Vector2(0.21, 0)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(0.1804, 0.949, 0.8784, 1)
-expand_margin_left = 4.0
-expand_margin_top = 4.0
-expand_margin_right = 4.0
-expand_margin_bottom = 4.0
+[sub_resource type="FontVariation" id="FV_tag"]
+base_font = ExtResource("5_label")
+spacing_glyph = 4
 
-; ---------- Slot (inventory, equipment, hotbar) ----------
 [sub_resource type="StyleBoxFlat" id="Slot_normal"]
 bg_color = Color(0.0549, 0.0784, 0.1882, 0.88)
 border_width_left = 2
@@ -113,6 +118,17 @@ border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0.6627, 0.6824, 0.7608, 0.22)
+corner_radius_top_left = 12
+corner_radius_bottom_right = 12
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="Slot_selected"]
+bg_color = Color(0.1373, 0.1137, 0.3216, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.9608, 0.9529, 1, 1)
 corner_radius_top_left = 12
 corner_radius_bottom_right = 12
 corner_detail = 1
@@ -128,19 +144,30 @@ corner_radius_top_left = 12
 corner_radius_bottom_right = 12
 corner_detail = 1
 
-; Drawn over normal/hover, under the icon and text, so it can repaint the fill.
-[sub_resource type="StyleBoxFlat" id="Slot_selected"]
-bg_color = Color(0.1373, 0.1137, 0.3216, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0.9608, 0.9529, 1, 1)
-corner_radius_top_left = 12
-corner_radius_bottom_right = 12
-corner_detail = 1
+[sub_resource type="StyleBoxFlat" id="Tab_focus"]
+draw_center = false
+skew = Vector2(0.21, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.1804, 0.949, 0.8784, 1)
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
 
-; ---------- Panels ----------
+[sub_resource type="StyleBoxFlat" id="Tab_selected"]
+content_margin_left = 22.0
+content_margin_top = 6.0
+content_margin_right = 22.0
+content_margin_bottom = 6.0
+bg_color = Color(0.9608, 0.9529, 1, 1)
+skew = Vector2(0.21, 0)
+shadow_color = Color(1, 0.1804, 0.5333, 1)
+shadow_size = 1
+shadow_offset = Vector2(6, 6)
+
 [sub_resource type="StyleBoxFlat" id="Tooltip_panel"]
 content_margin_left = 24.0
 content_margin_top = 24.0
@@ -151,44 +178,6 @@ border_width_left = 4
 border_color = Color(1, 0.1804, 0.5333, 1)
 corner_radius_top_right = 24
 corner_detail = 1
-
-[sub_resource type="StyleBoxFlat" id="Equip_panel"]
-bg_color = Color(0.0275, 0.0314, 0.0863, 0.55)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.9608, 0.9529, 1, 0.08)
-corner_radius_bottom_left = 40
-corner_detail = 1
-
-[sub_resource type="StyleBoxFlat" id="Key_box"]
-content_margin_left = 10.0
-content_margin_top = 0.0
-content_margin_right = 10.0
-content_margin_bottom = 0.0
-draw_center = false
-skew = Vector2(0.21, 0)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.6627, 0.6824, 0.7608, 1)
-
-[sub_resource type="StyleBoxLine" id="Divider"]
-color = Color(0.9608, 0.9529, 1, 0.12)
-thickness = 2
-
-[sub_resource type="StyleBoxFlat" id="NameTag_panel"]
-content_margin_left = 30.0
-content_margin_top = 6.0
-content_margin_right = 30.0
-content_margin_bottom = 4.0
-bg_color = Color(0.9608, 0.9529, 1, 1)
-skew = Vector2(0.21, 0)
-shadow_color = Color(1, 0.1804, 0.5333, 1)
-shadow_size = 1
-shadow_offset = Vector2(8, 8)
 
 [resource]
 default_font = ExtResource("1_body")
@@ -214,6 +203,8 @@ DisplayLabel/constants/shadow_offset_x = 6
 DisplayLabel/constants/shadow_offset_y = 6
 DisplayLabel/font_sizes/font_size = 72
 DisplayLabel/fonts/font = SubResource("FV_display")
+EquipPanel/base_type = &"Panel"
+EquipPanel/styles/panel = SubResource("Equip_panel")
 HSeparator/constants/separation = 2
 HSeparator/styles/separator = SubResource("Divider")
 HeadingLabel/base_type = &"Label"
@@ -240,8 +231,12 @@ MenuItem/styles/normal = SubResource("Menu_normal")
 MenuItem/styles/pressed = SubResource("Menu_selected")
 MenuItem/styles/shadow_magic = SubResource("Menu_shadow_magic")
 MenuItem/styles/shadow_trauma = SubResource("Menu_shadow_trauma")
-EquipPanel/base_type = &"Panel"
-EquipPanel/styles/panel = SubResource("Equip_panel")
+NameTag/base_type = &"PanelContainer"
+NameTag/styles/panel = SubResource("NameTag_panel")
+NameTagLabel/base_type = &"Label"
+NameTagLabel/colors/font_color = Color(0.0275, 0.0314, 0.0863, 1)
+NameTagLabel/font_sizes/font_size = 52
+NameTagLabel/fonts/font = SubResource("FV_display")
 Slot/base_type = &"Button"
 Slot/colors/font_color = Color(0.6627, 0.6824, 0.7608, 1)
 Slot/colors/font_focus_color = Color(0.9608, 0.9529, 1, 1)
@@ -257,21 +252,15 @@ Slot/styles/hover_pressed = SubResource("Slot_hover")
 Slot/styles/normal = SubResource("Slot_normal")
 Slot/styles/pressed = SubResource("Slot_hover")
 TabButton/base_type = &"Button"
+TabButton/colors/font_focus_color = Color(0.6627, 0.6824, 0.7608, 1)
+TabButton/colors/font_hover_color = Color(0.9608, 0.9529, 1, 1)
 TabButton/styles/focus = SubResource("Tab_focus")
 TabButton/styles/hover = SubResource("Btn_normal")
 TabButton/styles/hover_pressed = SubResource("Tab_selected")
 TabButton/styles/pressed = SubResource("Tab_selected")
-TabButton/colors/font_focus_color = Color(0.6627, 0.6824, 0.7608, 1)
-TabButton/colors/font_hover_color = Color(0.9608, 0.9529, 1, 1)
 TagLabel/base_type = &"Label"
 TagLabel/colors/font_color = Color(0.6627, 0.6824, 0.7608, 1)
 TagLabel/font_sizes/font_size = 18
 TagLabel/fonts/font = SubResource("FV_tag")
 TooltipPanel/base_type = &"PanelContainer"
 TooltipPanel/styles/panel = SubResource("Tooltip_panel")
-NameTag/base_type = &"PanelContainer"
-NameTag/styles/panel = SubResource("NameTag_panel")
-NameTagLabel/base_type = &"Label"
-NameTagLabel/colors/font_color = Color(0.0275, 0.0314, 0.0863, 1)
-NameTagLabel/font_sizes/font_size = 52
-NameTagLabel/fonts/font = SubResource("FV_display")

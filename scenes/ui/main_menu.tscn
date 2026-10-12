@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://cn313aagv68yc"]
 
-[ext_resource type="Script" uid="uid://dopr2jop3ktrt" path="res://scripts/MainMenu.cs" id="1_ekxnf"]
+[ext_resource type="Script" uid="uid://dopr2jop3ktrt" path="res://scripts/ui/MainMenu.cs" id="1_ekxnf"]
 [ext_resource type="PackedScene" uid="uid://dy2cfofenkk1c" path="res://scenes/main.tscn" id="2_wu84c"]
-[ext_resource type="Script" path="res://scripts/ui/MenuItem.cs" id="3_item"]
-[ext_resource type="Texture2D" path="res://assets/ui/title_silhouette.svg" id="4_sil"]
-[ext_resource type="FontFile" path="res://assets/fonts/BarlowCondensed-Bold.ttf" id="5_bold"]
+[ext_resource type="Script" uid="uid://djbvnrk4u5xwp" path="res://scripts/ui/MenuItem.cs" id="3_item"]
+[ext_resource type="Texture2D" uid="uid://c3nx42nki8ro6" path="res://assets/ui/title_silhouette.svg" id="4_sil"]
+[ext_resource type="FontFile" uid="uid://bdqoc838o4245" path="res://assets/fonts/BarlowCondensed-Bold.ttf" id="5_bold"]
 
 [sub_resource type="Gradient" id="G_bg"]
 offsets = PackedFloat32Array(0, 0.42, 1)
@@ -16,7 +16,6 @@ width = 512
 height = 288
 fill = 1
 fill_from = Vector2(0.24, 0.58)
-fill_to = Vector2(1, 0)
 
 [sub_resource type="Gradient" id="G_moon"]
 offsets = PackedFloat32Array(0, 0.52, 0.85, 0.98)
@@ -36,7 +35,7 @@ corner_radius_top_left = 150
 corner_radius_top_right = 150
 corner_radius_bottom_right = 150
 corner_radius_bottom_left = 150
-corner_detail = 24
+corner_detail = 20
 
 [sub_resource type="Gradient" id="G_smoke_violet"]
 offsets = PackedFloat32Array(0, 0.45, 1)
@@ -66,7 +65,6 @@ colors = PackedColorArray(0.0549, 0.0784, 0.1882, 0.2, 0.0196, 0.0235, 0.0588, 1
 gradient = SubResource("G_fade")
 width = 4
 height = 128
-fill_from = Vector2(0, 0)
 fill_to = Vector2(0, 1)
 
 [sub_resource type="Gradient" id="G_ring"]
@@ -76,13 +74,11 @@ colors = PackedColorArray(0.1804, 0.949, 0.8784, 0, 0.1804, 0.949, 0.8784, 0, 0.
 [sub_resource type="GradientTexture2D" id="T_ring"]
 gradient = SubResource("G_ring")
 width = 256
-height = 64
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 0.5)
 
 [sub_resource type="Gradient" id="G_glow"]
-offsets = PackedFloat32Array(0, 1)
 colors = PackedColorArray(1, 0.1804, 0.5333, 0.35, 1, 0.1804, 0.5333, 0)
 
 [sub_resource type="GradientTexture2D" id="T_glow"]
@@ -105,8 +101,8 @@ fill_to = Vector2(1, 0.5)
 
 [sub_resource type="FontVariation" id="FV_project"]
 base_font = ExtResource("5_bold")
-spacing_glyph = 13
 variation_transform = Transform2D(1, 0.21, 0, 1, 0, 0)
+spacing_glyph = 13
 
 [sub_resource type="StyleBoxFlat" id="S_wipe_trauma"]
 bg_color = Color(1, 0.1804, 0.5333, 1)
@@ -120,7 +116,7 @@ skew = Vector2(0.21, 0)
 bg_color = Color(0.0275, 0.0314, 0.0863, 1)
 skew = Vector2(0.21, 0)
 
-[node name="MainMenu" type="Control"]
+[node name="MainMenu" type="Control" unique_id=751861510]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -130,7 +126,7 @@ grow_vertical = 2
 script = ExtResource("1_ekxnf")
 GameScene = ExtResource("2_wu84c")
 
-[node name="Background" type="TextureRect" parent="."]
+[node name="Background" type="TextureRect" parent="." unique_id=1565133252]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -141,7 +137,7 @@ mouse_filter = 2
 texture = SubResource("T_bg")
 expand_mode = 1
 
-[node name="Moon" type="TextureRect" parent="."]
+[node name="Moon" type="TextureRect" parent="." unique_id=1297605302]
 modulate = Color(1, 1, 1, 0.85)
 layout_mode = 0
 offset_left = 88.0
@@ -152,7 +148,7 @@ mouse_filter = 2
 texture = SubResource("T_moon")
 expand_mode = 1
 
-[node name="MoonShadow" type="Panel" parent="."]
+[node name="MoonShadow" type="Panel" parent="." unique_id=1152047170]
 layout_mode = 0
 offset_left = 306.0
 offset_top = 116.0
@@ -161,12 +157,12 @@ offset_bottom = 416.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("S_moon_shadow")
 
-[node name="Smoke" type="Control" parent="."]
+[node name="Smoke" type="Control" parent="." unique_id=57894849]
 unique_name_in_owner = true
 anchors_preset = 0
 mouse_filter = 2
 
-[node name="Violet" type="TextureRect" parent="Smoke"]
+[node name="Violet" type="TextureRect" parent="Smoke" unique_id=1898904657]
 layout_mode = 0
 offset_left = -270.0
 offset_top = 490.0
@@ -177,7 +173,7 @@ texture = SubResource("T_smoke_violet")
 expand_mode = 1
 metadata/delay = 0.0
 
-[node name="Trauma" type="TextureRect" parent="Smoke"]
+[node name="Trauma" type="TextureRect" parent="Smoke" unique_id=869107365]
 layout_mode = 0
 offset_left = 310.0
 offset_top = 630.0
@@ -188,11 +184,11 @@ texture = SubResource("T_smoke_trauma")
 expand_mode = 1
 metadata/delay = 7.0
 
-[node name="Ground" type="Polygon2D" parent="."]
+[node name="Ground" type="Polygon2D" parent="." unique_id=310204623]
 color = Color(0.0196, 0.0235, 0.0588, 1)
 polygon = PackedVector2Array(-40, 835, 422, 792, 598, 770, 686, 820, 774, 1130, -40, 1130)
 
-[node name="GroundFade" type="TextureRect" parent="."]
+[node name="GroundFade" type="TextureRect" parent="." unique_id=1903752391]
 layout_mode = 0
 offset_top = 860.0
 offset_right = 1920.0
@@ -201,12 +197,12 @@ mouse_filter = 2
 texture = SubResource("T_fade")
 expand_mode = 1
 
-[node name="Ripples" type="Control" parent="."]
+[node name="Ripples" type="Control" parent="." unique_id=377926867]
 unique_name_in_owner = true
 anchors_preset = 0
 mouse_filter = 2
 
-[node name="Ripple1" type="TextureRect" parent="Ripples"]
+[node name="Ripple1" type="TextureRect" parent="Ripples" unique_id=390629386]
 layout_mode = 0
 offset_left = 520.0
 offset_top = 748.0
@@ -217,7 +213,7 @@ texture = SubResource("T_ring")
 expand_mode = 1
 metadata/delay = 0.0
 
-[node name="Ripple2" type="TextureRect" parent="Ripples"]
+[node name="Ripple2" type="TextureRect" parent="Ripples" unique_id=804811869]
 layout_mode = 0
 offset_left = 520.0
 offset_top = 748.0
@@ -228,7 +224,7 @@ texture = SubResource("T_ring")
 expand_mode = 1
 metadata/delay = 2.0
 
-[node name="SilhouetteGlow" type="TextureRect" parent="."]
+[node name="SilhouetteGlow" type="TextureRect" parent="." unique_id=1650652519]
 layout_mode = 0
 offset_left = 420.0
 offset_top = 260.0
@@ -238,7 +234,7 @@ mouse_filter = 2
 texture = SubResource("T_glow")
 expand_mode = 1
 
-[node name="Silhouette" type="TextureRect" parent="."]
+[node name="Silhouette" type="TextureRect" parent="." unique_id=1724777014]
 layout_mode = 0
 offset_left = 490.0
 offset_top = 290.0
@@ -248,12 +244,12 @@ mouse_filter = 2
 texture = ExtResource("4_sil")
 expand_mode = 1
 
-[node name="Motes" type="Control" parent="."]
+[node name="Motes" type="Control" parent="." unique_id=1065938813]
 unique_name_in_owner = true
 anchors_preset = 0
 mouse_filter = 2
 
-[node name="Mote1" type="TextureRect" parent="Motes"]
+[node name="Mote1" type="TextureRect" parent="Motes" unique_id=345775150]
 modulate = Color(0.1804, 0.949, 0.8784, 1)
 layout_mode = 0
 offset_left = 408.0
@@ -265,7 +261,7 @@ texture = SubResource("T_mote")
 expand_mode = 1
 metadata/delay = 1.0
 
-[node name="Mote2" type="TextureRect" parent="Motes"]
+[node name="Mote2" type="TextureRect" parent="Motes" unique_id=398405152]
 modulate = Color(1, 0.1804, 0.5333, 1)
 layout_mode = 0
 offset_left = 598.0
@@ -277,7 +273,7 @@ texture = SubResource("T_mote")
 expand_mode = 1
 metadata/delay = 3.0
 
-[node name="Mote3" type="TextureRect" parent="Motes"]
+[node name="Mote3" type="TextureRect" parent="Motes" unique_id=1531376088]
 modulate = Color(0.1804, 0.949, 0.8784, 1)
 layout_mode = 0
 offset_left = 708.0
@@ -289,7 +285,7 @@ texture = SubResource("T_mote")
 expand_mode = 1
 metadata/delay = 5.0
 
-[node name="Mote4" type="TextureRect" parent="Motes"]
+[node name="Mote4" type="TextureRect" parent="Motes" unique_id=663259179]
 modulate = Color(0.1804, 0.949, 0.8784, 1)
 layout_mode = 0
 offset_left = 288.0
@@ -301,7 +297,7 @@ texture = SubResource("T_mote")
 expand_mode = 1
 metadata/delay = 7.0
 
-[node name="Mote5" type="TextureRect" parent="Motes"]
+[node name="Mote5" type="TextureRect" parent="Motes" unique_id=126356089]
 modulate = Color(1, 0.1804, 0.5333, 1)
 layout_mode = 0
 offset_left = 868.0
@@ -313,7 +309,7 @@ texture = SubResource("T_mote")
 expand_mode = 1
 metadata/delay = 2.0
 
-[node name="Mote6" type="TextureRect" parent="Motes"]
+[node name="Mote6" type="TextureRect" parent="Motes" unique_id=433021448]
 modulate = Color(0.1804, 0.949, 0.8784, 1)
 layout_mode = 0
 offset_left = 968.0
@@ -325,7 +321,7 @@ texture = SubResource("T_mote")
 expand_mode = 1
 metadata/delay = 8.0
 
-[node name="Mote7" type="TextureRect" parent="Motes"]
+[node name="Mote7" type="TextureRect" parent="Motes" unique_id=47028036]
 modulate = Color(0.1804, 0.949, 0.8784, 1)
 layout_mode = 0
 offset_left = 148.0
@@ -337,7 +333,7 @@ texture = SubResource("T_mote")
 expand_mode = 1
 metadata/delay = 4.0
 
-[node name="Mote8" type="TextureRect" parent="Motes"]
+[node name="Mote8" type="TextureRect" parent="Motes" unique_id=1823039269]
 modulate = Color(1, 0.1804, 0.5333, 1)
 layout_mode = 0
 offset_left = 528.0
@@ -349,7 +345,7 @@ texture = SubResource("T_mote")
 expand_mode = 1
 metadata/delay = 6.0
 
-[node name="Mote9" type="TextureRect" parent="Motes"]
+[node name="Mote9" type="TextureRect" parent="Motes" unique_id=864377814]
 modulate = Color(0.1804, 0.949, 0.8784, 1)
 layout_mode = 0
 offset_left = 1088.0
@@ -361,7 +357,7 @@ texture = SubResource("T_mote")
 expand_mode = 1
 metadata/delay = 9.0
 
-[node name="Mote10" type="TextureRect" parent="Motes"]
+[node name="Mote10" type="TextureRect" parent="Motes" unique_id=1335290521]
 modulate = Color(0.1804, 0.949, 0.8784, 1)
 layout_mode = 0
 offset_left = 648.0
@@ -373,7 +369,7 @@ texture = SubResource("T_mote")
 expand_mode = 1
 metadata/delay = 2.5
 
-[node name="Mote11" type="TextureRect" parent="Motes"]
+[node name="Mote11" type="TextureRect" parent="Motes" unique_id=1041108572]
 modulate = Color(1, 0.1804, 0.5333, 1)
 layout_mode = 0
 offset_left = 228.0
@@ -385,7 +381,7 @@ texture = SubResource("T_mote")
 expand_mode = 1
 metadata/delay = 5.5
 
-[node name="Mote12" type="TextureRect" parent="Motes"]
+[node name="Mote12" type="TextureRect" parent="Motes" unique_id=475514713]
 modulate = Color(0.1804, 0.949, 0.8784, 1)
 layout_mode = 0
 offset_left = 808.0
@@ -397,7 +393,7 @@ texture = SubResource("T_mote")
 expand_mode = 1
 metadata/delay = 7.5
 
-[node name="Slash" type="Control" parent="."]
+[node name="Slash" type="Control" parent="." unique_id=107006575]
 anchors_preset = 0
 offset_left = 1060.0
 offset_top = -200.0
@@ -406,35 +402,41 @@ offset_bottom = 1400.0
 rotation = 0.244346
 mouse_filter = 2
 
-[node name="MagicEdge" type="ColorRect" parent="Slash"]
+[node name="MagicEdge" type="ColorRect" parent="Slash" unique_id=1074519107]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -22.0
 offset_right = -22.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 color = Color(0.1804, 0.949, 0.8784, 0.55)
 
-[node name="TraumaEdge" type="ColorRect" parent="Slash"]
+[node name="TraumaEdge" type="ColorRect" parent="Slash" unique_id=1712850877]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -10.0
 offset_right = -10.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 color = Color(1, 0.1804, 0.5333, 1)
 
-[node name="Panel" type="ColorRect" parent="Slash"]
+[node name="Panel" type="ColorRect" parent="Slash" unique_id=1285127606]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 color = Color(0.0431, 0.0588, 0.149, 1)
 
-[node name="SlashStripe" type="ColorRect" parent="."]
+[node name="SlashStripe" type="ColorRect" parent="." unique_id=840919317]
 layout_mode = 0
 offset_left = 1180.0
 offset_top = -200.0
@@ -444,7 +446,7 @@ rotation = 0.244346
 mouse_filter = 2
 color = Color(0.4196, 0.2471, 0.6275, 0.35)
 
-[node name="TitleBlock" type="Control" parent="."]
+[node name="TitleBlock" type="Control" parent="." unique_id=1553124958]
 anchors_preset = 0
 offset_left = 1250.0
 offset_top = 90.0
@@ -452,7 +454,7 @@ offset_right = 1250.0
 offset_bottom = 90.0
 mouse_filter = 2
 
-[node name="TitleGlow" type="TextureRect" parent="TitleBlock"]
+[node name="TitleGlow" type="TextureRect" parent="TitleBlock" unique_id=698307642]
 layout_mode = 0
 offset_left = -80.0
 offset_top = 20.0
@@ -462,7 +464,7 @@ mouse_filter = 2
 texture = SubResource("T_glow")
 expand_mode = 1
 
-[node name="Project" type="Label" parent="TitleBlock"]
+[node name="Project" type="Label" parent="TitleBlock" unique_id=35286724]
 layout_mode = 0
 offset_left = 8.0
 offset_right = 280.0
@@ -472,7 +474,7 @@ theme_override_fonts/font = SubResource("FV_project")
 theme_override_font_sizes/font_size = 26
 text = "PROJECT"
 
-[node name="Rem" type="Label" parent="TitleBlock"]
+[node name="Rem" type="Label" parent="TitleBlock" unique_id=1112213449]
 layout_mode = 0
 offset_top = 6.0
 offset_right = 420.0
@@ -483,7 +485,7 @@ theme_override_constants/shadow_offset_y = 8
 theme_override_font_sizes/font_size = 220
 text = "REM"
 
-[node name="Menu" type="Control" parent="."]
+[node name="Menu" type="Control" parent="." unique_id=1706959182]
 unique_name_in_owner = true
 anchors_preset = 0
 offset_left = 1290.0
@@ -491,57 +493,57 @@ offset_top = 430.0
 offset_right = 1290.0
 offset_bottom = 430.0
 
-[node name="StartButton" type="Button" parent="Menu"]
+[node name="StartButton" type="Button" parent="Menu" unique_id=2049361467]
 unique_name_in_owner = true
 layout_mode = 0
 offset_right = 10.0
 offset_bottom = 10.0
 focus_neighbor_top = NodePath("../QuitButton")
-text = "START DREAM"
 theme_type_variation = &"MenuItem"
+text = "START DREAM"
 script = ExtResource("3_item")
 Description = "Close your eyes. Descend into a new dream."
 
-[node name="ContinueButton" type="Button" parent="Menu"]
+[node name="ContinueButton" type="Button" parent="Menu" unique_id=194311501]
 layout_mode = 0
 offset_left = 34.0
 offset_top = 104.0
 offset_right = 44.0
 offset_bottom = 114.0
 focus_mode = 0
+theme_type_variation = &"MenuItem"
 disabled = true
 text = "CONTINUE"
-theme_type_variation = &"MenuItem"
 script = ExtResource("3_item")
 Description = "Return to the dream you left unfinished."
 
-[node name="MemoriesButton" type="Button" parent="Menu"]
+[node name="MemoriesButton" type="Button" parent="Menu" unique_id=1842264239]
 layout_mode = 0
 offset_left = 68.0
 offset_top = 208.0
 offset_right = 78.0
 offset_bottom = 218.0
 focus_mode = 0
+theme_type_variation = &"MenuItem"
 disabled = true
 text = "MEMORIES"
-theme_type_variation = &"MenuItem"
 script = ExtResource("3_item")
 Description = "Fragments you have recovered, and the ones still lost."
 
-[node name="SettingsButton" type="Button" parent="Menu"]
+[node name="SettingsButton" type="Button" parent="Menu" unique_id=478869604]
 layout_mode = 0
 offset_left = 102.0
 offset_top = 312.0
 offset_right = 112.0
 offset_bottom = 322.0
 focus_mode = 0
+theme_type_variation = &"MenuItem"
 disabled = true
 text = "SETTINGS"
-theme_type_variation = &"MenuItem"
 script = ExtResource("3_item")
 Description = "Graphics, audio, controls and accessibility."
 
-[node name="QuitButton" type="Button" parent="Menu"]
+[node name="QuitButton" type="Button" parent="Menu" unique_id=207171560]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 136.0
@@ -549,12 +551,12 @@ offset_top = 416.0
 offset_right = 146.0
 offset_bottom = 426.0
 focus_neighbor_bottom = NodePath("../StartButton")
-text = "AWAKE"
 theme_type_variation = &"MenuItem"
+text = "AWAKE"
 script = ExtResource("3_item")
 Description = "Wake up. Leave the dream for now."
 
-[node name="Description" type="Label" parent="."]
+[node name="Description" type="Label" parent="." unique_id=2009141438]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 1300.0
@@ -565,7 +567,7 @@ theme_type_variation = &"LoreLabel"
 text = "Close your eyes. Descend into a new dream."
 autowrap_mode = 3
 
-[node name="Hints" type="HBoxContainer" parent="."]
+[node name="Hints" type="HBoxContainer" parent="." unique_id=522561851]
 layout_mode = 0
 offset_left = 64.0
 offset_top = 1000.0
@@ -573,18 +575,18 @@ offset_right = 400.0
 offset_bottom = 1032.0
 theme_override_constants/separation = 10
 
-[node name="EnterKey" type="Label" parent="Hints"]
+[node name="EnterKey" type="Label" parent="Hints" unique_id=1115469612]
 layout_mode = 2
 theme_type_variation = &"KeyHint"
 text = "ENTER"
 
-[node name="EnterLabel" type="Label" parent="Hints"]
+[node name="EnterLabel" type="Label" parent="Hints" unique_id=1398749766]
 layout_mode = 2
 theme_type_variation = &"TagLabel"
 theme_override_font_sizes/font_size = 22
 text = "SELECT"
 
-[node name="Wipe" type="Control" parent="."]
+[node name="Wipe" type="Control" parent="." unique_id=1577501427]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -594,7 +596,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="TraumaBar" type="Panel" parent="Wipe"]
+[node name="TraumaBar" type="Panel" parent="Wipe" unique_id=1090799815]
 visible = false
 layout_mode = 0
 offset_left = -3000.0
@@ -604,7 +606,7 @@ offset_bottom = 1120.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("S_wipe_trauma")
 
-[node name="MagicBar" type="Panel" parent="Wipe"]
+[node name="MagicBar" type="Panel" parent="Wipe" unique_id=212857190]
 visible = false
 layout_mode = 0
 offset_left = -3000.0
@@ -614,7 +616,7 @@ offset_bottom = 1120.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("S_wipe_magic")
 
-[node name="VoidBar" type="Panel" parent="Wipe"]
+[node name="VoidBar" type="Panel" parent="Wipe" unique_id=1481131861]
 visible = false
 layout_mode = 0
 offset_left = -3000.0
