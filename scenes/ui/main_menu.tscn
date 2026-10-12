@@ -1,10 +1,126 @@
 [gd_scene format=3 uid="uid://cn313aagv68yc"]
 
 [ext_resource type="Script" uid="uid://dopr2jop3ktrt" path="res://scripts/MainMenu.cs" id="1_ekxnf"]
-[ext_resource type="Texture2D" uid="uid://cq588a0afi5bb" path="res://assets/static_images/darksness_devil.jpg" id="2_bqqt6"]
 [ext_resource type="PackedScene" uid="uid://dy2cfofenkk1c" path="res://scenes/main.tscn" id="2_wu84c"]
+[ext_resource type="Script" path="res://scripts/ui/MenuItem.cs" id="3_item"]
+[ext_resource type="Texture2D" path="res://assets/ui/title_silhouette.svg" id="4_sil"]
+[ext_resource type="FontFile" path="res://assets/fonts/BarlowCondensed-Bold.ttf" id="5_bold"]
 
-[node name="MainMenu" type="Control" unique_id=390344548]
+[sub_resource type="Gradient" id="G_bg"]
+offsets = PackedFloat32Array(0, 0.42, 1)
+colors = PackedColorArray(0.1647, 0.0784, 0.3137, 1, 0.0549, 0.0784, 0.1882, 1, 0.0275, 0.0314, 0.0863, 1)
+
+[sub_resource type="GradientTexture2D" id="T_bg"]
+gradient = SubResource("G_bg")
+width = 512
+height = 288
+fill = 1
+fill_from = Vector2(0.24, 0.58)
+fill_to = Vector2(1, 0)
+
+[sub_resource type="Gradient" id="G_moon"]
+offsets = PackedFloat32Array(0, 0.52, 0.85, 0.98)
+colors = PackedColorArray(0.9137, 0.9843, 1, 1, 0.6235, 0.9137, 0.9412, 1, 0.1804, 0.949, 0.8784, 0.15, 0.1804, 0.949, 0.8784, 0)
+
+[sub_resource type="GradientTexture2D" id="T_moon"]
+gradient = SubResource("G_moon")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="StyleBoxFlat" id="S_moon_shadow"]
+bg_color = Color(0.0549, 0.0784, 0.1882, 0.92)
+corner_radius_top_left = 150
+corner_radius_top_right = 150
+corner_radius_bottom_right = 150
+corner_radius_bottom_left = 150
+corner_detail = 24
+
+[sub_resource type="Gradient" id="G_smoke_violet"]
+offsets = PackedFloat32Array(0, 0.45, 1)
+colors = PackedColorArray(0.2314, 0.1137, 0.4314, 0.7, 0.2314, 0.1137, 0.4314, 0.5, 0.2314, 0.1137, 0.4314, 0)
+
+[sub_resource type="GradientTexture2D" id="T_smoke_violet"]
+gradient = SubResource("G_smoke_violet")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="Gradient" id="G_smoke_trauma"]
+offsets = PackedFloat32Array(0, 0.45, 1)
+colors = PackedColorArray(1, 0.1804, 0.5333, 0.18, 1, 0.1804, 0.5333, 0.12, 1, 0.1804, 0.5333, 0)
+
+[sub_resource type="GradientTexture2D" id="T_smoke_trauma"]
+gradient = SubResource("G_smoke_trauma")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="Gradient" id="G_fade"]
+offsets = PackedFloat32Array(0, 0.7)
+colors = PackedColorArray(0.0549, 0.0784, 0.1882, 0.2, 0.0196, 0.0235, 0.0588, 1)
+
+[sub_resource type="GradientTexture2D" id="T_fade"]
+gradient = SubResource("G_fade")
+width = 4
+height = 128
+fill_from = Vector2(0, 0)
+fill_to = Vector2(0, 1)
+
+[sub_resource type="Gradient" id="G_ring"]
+offsets = PackedFloat32Array(0, 0.84, 0.92, 1)
+colors = PackedColorArray(0.1804, 0.949, 0.8784, 0, 0.1804, 0.949, 0.8784, 0, 0.1804, 0.949, 0.8784, 0.5, 0.1804, 0.949, 0.8784, 0)
+
+[sub_resource type="GradientTexture2D" id="T_ring"]
+gradient = SubResource("G_ring")
+width = 256
+height = 64
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="Gradient" id="G_glow"]
+offsets = PackedFloat32Array(0, 1)
+colors = PackedColorArray(1, 0.1804, 0.5333, 0.35, 1, 0.1804, 0.5333, 0)
+
+[sub_resource type="GradientTexture2D" id="T_glow"]
+gradient = SubResource("G_glow")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="Gradient" id="G_mote"]
+offsets = PackedFloat32Array(0, 0.2, 0.3, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.55, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="T_mote"]
+gradient = SubResource("G_mote")
+width = 32
+height = 32
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="FontVariation" id="FV_project"]
+base_font = ExtResource("5_bold")
+spacing_glyph = 13
+variation_transform = Transform2D(1, 0.21, 0, 1, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="S_wipe_trauma"]
+bg_color = Color(1, 0.1804, 0.5333, 1)
+skew = Vector2(0.21, 0)
+
+[sub_resource type="StyleBoxFlat" id="S_wipe_magic"]
+bg_color = Color(0.1804, 0.949, 0.8784, 1)
+skew = Vector2(0.21, 0)
+
+[sub_resource type="StyleBoxFlat" id="S_wipe_void"]
+bg_color = Color(0.0275, 0.0314, 0.0863, 1)
+skew = Vector2(0.21, 0)
+
+[node name="MainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,36 +130,496 @@ grow_vertical = 2
 script = ExtResource("1_ekxnf")
 GameScene = ExtResource("2_wu84c")
 
-[node name="Background" type="TextureRect" parent="." unique_id=680684790]
+[node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_bqqt6")
-expand_mode = 3
+mouse_filter = 2
+texture = SubResource("T_bg")
+expand_mode = 1
 
-[node name="CenterContainer" type="CenterContainer" parent="Background" unique_id=39209689]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 54.0
-offset_top = 67.0
-offset_right = -994.0
-offset_bottom = -546.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Moon" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.85)
+layout_mode = 0
+offset_left = 88.0
+offset_top = -2.0
+offset_right = 608.0
+offset_bottom = 518.0
+mouse_filter = 2
+texture = SubResource("T_moon")
+expand_mode = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Background/CenterContainer" unique_id=1086956184]
-layout_mode = 2
+[node name="MoonShadow" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 306.0
+offset_top = 116.0
+offset_right = 606.0
+offset_bottom = 416.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("S_moon_shadow")
 
-[node name="Label" type="Label" parent="Background/CenterContainer/VBoxContainer" unique_id=3003095]
-layout_mode = 2
-text = "PROJECT REM"
-
-[node name="PlayButton" type="Button" parent="Background/CenterContainer/VBoxContainer" unique_id=827557778]
+[node name="Smoke" type="Control" parent="."]
 unique_name_in_owner = true
+anchors_preset = 0
+mouse_filter = 2
+
+[node name="Violet" type="TextureRect" parent="Smoke"]
+layout_mode = 0
+offset_left = -270.0
+offset_top = 490.0
+offset_right = 770.0
+offset_bottom = 970.0
+mouse_filter = 2
+texture = SubResource("T_smoke_violet")
+expand_mode = 1
+metadata/delay = 0.0
+
+[node name="Trauma" type="TextureRect" parent="Smoke"]
+layout_mode = 0
+offset_left = 310.0
+offset_top = 630.0
+offset_right = 1250.0
+offset_bottom = 1070.0
+mouse_filter = 2
+texture = SubResource("T_smoke_trauma")
+expand_mode = 1
+metadata/delay = 7.0
+
+[node name="Ground" type="Polygon2D" parent="."]
+color = Color(0.0196, 0.0235, 0.0588, 1)
+polygon = PackedVector2Array(-40, 835, 422, 792, 598, 770, 686, 820, 774, 1130, -40, 1130)
+
+[node name="GroundFade" type="TextureRect" parent="."]
+layout_mode = 0
+offset_top = 860.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
+texture = SubResource("T_fade")
+expand_mode = 1
+
+[node name="Ripples" type="Control" parent="."]
+unique_name_in_owner = true
+anchors_preset = 0
+mouse_filter = 2
+
+[node name="Ripple1" type="TextureRect" parent="Ripples"]
+layout_mode = 0
+offset_left = 520.0
+offset_top = 748.0
+offset_right = 680.0
+offset_bottom = 788.0
+mouse_filter = 2
+texture = SubResource("T_ring")
+expand_mode = 1
+metadata/delay = 0.0
+
+[node name="Ripple2" type="TextureRect" parent="Ripples"]
+layout_mode = 0
+offset_left = 520.0
+offset_top = 748.0
+offset_right = 680.0
+offset_bottom = 788.0
+mouse_filter = 2
+texture = SubResource("T_ring")
+expand_mode = 1
+metadata/delay = 2.0
+
+[node name="SilhouetteGlow" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 420.0
+offset_top = 260.0
+offset_right = 780.0
+offset_bottom = 860.0
+mouse_filter = 2
+texture = SubResource("T_glow")
+expand_mode = 1
+
+[node name="Silhouette" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 490.0
+offset_top = 290.0
+offset_right = 710.0
+offset_bottom = 830.0
+mouse_filter = 2
+texture = ExtResource("4_sil")
+expand_mode = 1
+
+[node name="Motes" type="Control" parent="."]
+unique_name_in_owner = true
+anchors_preset = 0
+mouse_filter = 2
+
+[node name="Mote1" type="TextureRect" parent="Motes"]
+modulate = Color(0.1804, 0.949, 0.8784, 1)
+layout_mode = 0
+offset_left = 408.0
+offset_top = 748.0
+offset_right = 438.0
+offset_bottom = 778.0
+mouse_filter = 2
+texture = SubResource("T_mote")
+expand_mode = 1
+metadata/delay = 1.0
+
+[node name="Mote2" type="TextureRect" parent="Motes"]
+modulate = Color(1, 0.1804, 0.5333, 1)
+layout_mode = 0
+offset_left = 598.0
+offset_top = 808.0
+offset_right = 628.0
+offset_bottom = 838.0
+mouse_filter = 2
+texture = SubResource("T_mote")
+expand_mode = 1
+metadata/delay = 3.0
+
+[node name="Mote3" type="TextureRect" parent="Motes"]
+modulate = Color(0.1804, 0.949, 0.8784, 1)
+layout_mode = 0
+offset_left = 708.0
+offset_top = 688.0
+offset_right = 738.0
+offset_bottom = 718.0
+mouse_filter = 2
+texture = SubResource("T_mote")
+expand_mode = 1
+metadata/delay = 5.0
+
+[node name="Mote4" type="TextureRect" parent="Motes"]
+modulate = Color(0.1804, 0.949, 0.8784, 1)
+layout_mode = 0
+offset_left = 288.0
+offset_top = 848.0
+offset_right = 318.0
+offset_bottom = 878.0
+mouse_filter = 2
+texture = SubResource("T_mote")
+expand_mode = 1
+metadata/delay = 7.0
+
+[node name="Mote5" type="TextureRect" parent="Motes"]
+modulate = Color(1, 0.1804, 0.5333, 1)
+layout_mode = 0
+offset_left = 868.0
+offset_top = 748.0
+offset_right = 898.0
+offset_bottom = 778.0
+mouse_filter = 2
+texture = SubResource("T_mote")
+expand_mode = 1
+metadata/delay = 2.0
+
+[node name="Mote6" type="TextureRect" parent="Motes"]
+modulate = Color(0.1804, 0.949, 0.8784, 1)
+layout_mode = 0
+offset_left = 968.0
+offset_top = 888.0
+offset_right = 998.0
+offset_bottom = 918.0
+mouse_filter = 2
+texture = SubResource("T_mote")
+expand_mode = 1
+metadata/delay = 8.0
+
+[node name="Mote7" type="TextureRect" parent="Motes"]
+modulate = Color(0.1804, 0.949, 0.8784, 1)
+layout_mode = 0
+offset_left = 148.0
+offset_top = 708.0
+offset_right = 178.0
+offset_bottom = 738.0
+mouse_filter = 2
+texture = SubResource("T_mote")
+expand_mode = 1
+metadata/delay = 4.0
+
+[node name="Mote8" type="TextureRect" parent="Motes"]
+modulate = Color(1, 0.1804, 0.5333, 1)
+layout_mode = 0
+offset_left = 528.0
+offset_top = 628.0
+offset_right = 558.0
+offset_bottom = 658.0
+mouse_filter = 2
+texture = SubResource("T_mote")
+expand_mode = 1
+metadata/delay = 6.0
+
+[node name="Mote9" type="TextureRect" parent="Motes"]
+modulate = Color(0.1804, 0.949, 0.8784, 1)
+layout_mode = 0
+offset_left = 1088.0
+offset_top = 808.0
+offset_right = 1118.0
+offset_bottom = 838.0
+mouse_filter = 2
+texture = SubResource("T_mote")
+expand_mode = 1
+metadata/delay = 9.0
+
+[node name="Mote10" type="TextureRect" parent="Motes"]
+modulate = Color(0.1804, 0.949, 0.8784, 1)
+layout_mode = 0
+offset_left = 648.0
+offset_top = 908.0
+offset_right = 678.0
+offset_bottom = 938.0
+mouse_filter = 2
+texture = SubResource("T_mote")
+expand_mode = 1
+metadata/delay = 2.5
+
+[node name="Mote11" type="TextureRect" parent="Motes"]
+modulate = Color(1, 0.1804, 0.5333, 1)
+layout_mode = 0
+offset_left = 228.0
+offset_top = 588.0
+offset_right = 258.0
+offset_bottom = 618.0
+mouse_filter = 2
+texture = SubResource("T_mote")
+expand_mode = 1
+metadata/delay = 5.5
+
+[node name="Mote12" type="TextureRect" parent="Motes"]
+modulate = Color(0.1804, 0.949, 0.8784, 1)
+layout_mode = 0
+offset_left = 808.0
+offset_top = 548.0
+offset_right = 838.0
+offset_bottom = 578.0
+mouse_filter = 2
+texture = SubResource("T_mote")
+expand_mode = 1
+metadata/delay = 7.5
+
+[node name="Slash" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 1060.0
+offset_top = -200.0
+offset_right = 2360.0
+offset_bottom = 1400.0
+rotation = 0.244346
+mouse_filter = 2
+
+[node name="MagicEdge" type="ColorRect" parent="Slash"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -22.0
+offset_right = -22.0
+mouse_filter = 2
+color = Color(0.1804, 0.949, 0.8784, 0.55)
+
+[node name="TraumaEdge" type="ColorRect" parent="Slash"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -10.0
+offset_right = -10.0
+mouse_filter = 2
+color = Color(1, 0.1804, 0.5333, 1)
+
+[node name="Panel" type="ColorRect" parent="Slash"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(0.0431, 0.0588, 0.149, 1)
+
+[node name="SlashStripe" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 1180.0
+offset_top = -200.0
+offset_right = 1240.0
+offset_bottom = 1400.0
+rotation = 0.244346
+mouse_filter = 2
+color = Color(0.4196, 0.2471, 0.6275, 0.35)
+
+[node name="TitleBlock" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 1250.0
+offset_top = 90.0
+offset_right = 1250.0
+offset_bottom = 90.0
+mouse_filter = 2
+
+[node name="TitleGlow" type="TextureRect" parent="TitleBlock"]
+layout_mode = 0
+offset_left = -80.0
+offset_top = 20.0
+offset_right = 520.0
+offset_bottom = 300.0
+mouse_filter = 2
+texture = SubResource("T_glow")
+expand_mode = 1
+
+[node name="Project" type="Label" parent="TitleBlock"]
+layout_mode = 0
+offset_left = 8.0
+offset_right = 280.0
+offset_bottom = 32.0
+theme_override_colors/font_color = Color(0.1804, 0.949, 0.8784, 1)
+theme_override_fonts/font = SubResource("FV_project")
+theme_override_font_sizes/font_size = 26
+text = "PROJECT"
+
+[node name="Rem" type="Label" parent="TitleBlock"]
+layout_mode = 0
+offset_top = 6.0
+offset_right = 420.0
+offset_bottom = 270.0
+theme_type_variation = &"DisplayLabel"
+theme_override_constants/shadow_offset_x = 8
+theme_override_constants/shadow_offset_y = 8
+theme_override_font_sizes/font_size = 220
+text = "REM"
+
+[node name="Menu" type="Control" parent="."]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_left = 1290.0
+offset_top = 430.0
+offset_right = 1290.0
+offset_bottom = 430.0
+
+[node name="StartButton" type="Button" parent="Menu"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 10.0
+offset_bottom = 10.0
+focus_neighbor_top = NodePath("../QuitButton")
+text = "START DREAM"
+theme_type_variation = &"MenuItem"
+script = ExtResource("3_item")
+Description = "Close your eyes. Descend into a new dream."
+
+[node name="ContinueButton" type="Button" parent="Menu"]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 104.0
+offset_right = 44.0
+offset_bottom = 114.0
+focus_mode = 0
+disabled = true
+text = "CONTINUE"
+theme_type_variation = &"MenuItem"
+script = ExtResource("3_item")
+Description = "Return to the dream you left unfinished."
+
+[node name="MemoriesButton" type="Button" parent="Menu"]
+layout_mode = 0
+offset_left = 68.0
+offset_top = 208.0
+offset_right = 78.0
+offset_bottom = 218.0
+focus_mode = 0
+disabled = true
+text = "MEMORIES"
+theme_type_variation = &"MenuItem"
+script = ExtResource("3_item")
+Description = "Fragments you have recovered, and the ones still lost."
+
+[node name="SettingsButton" type="Button" parent="Menu"]
+layout_mode = 0
+offset_left = 102.0
+offset_top = 312.0
+offset_right = 112.0
+offset_bottom = 322.0
+focus_mode = 0
+disabled = true
+text = "SETTINGS"
+theme_type_variation = &"MenuItem"
+script = ExtResource("3_item")
+Description = "Graphics, audio, controls and accessibility."
+
+[node name="QuitButton" type="Button" parent="Menu"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 136.0
+offset_top = 416.0
+offset_right = 146.0
+offset_bottom = 426.0
+focus_neighbor_bottom = NodePath("../StartButton")
+text = "AWAKE"
+theme_type_variation = &"MenuItem"
+script = ExtResource("3_item")
+Description = "Wake up. Leave the dream for now."
+
+[node name="Description" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 1300.0
+offset_top = 940.0
+offset_right = 1860.0
+offset_bottom = 1010.0
+theme_type_variation = &"LoreLabel"
+text = "Close your eyes. Descend into a new dream."
+autowrap_mode = 3
+
+[node name="Hints" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 1000.0
+offset_right = 400.0
+offset_bottom = 1032.0
+theme_override_constants/separation = 10
+
+[node name="EnterKey" type="Label" parent="Hints"]
 layout_mode = 2
-text = "Play :)"
+theme_type_variation = &"KeyHint"
+text = "ENTER"
+
+[node name="EnterLabel" type="Label" parent="Hints"]
+layout_mode = 2
+theme_type_variation = &"TagLabel"
+theme_override_font_sizes/font_size = 22
+text = "SELECT"
+
+[node name="Wipe" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TraumaBar" type="Panel" parent="Wipe"]
+visible = false
+layout_mode = 0
+offset_left = -3000.0
+offset_top = -40.0
+offset_right = -400.0
+offset_bottom = 1120.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("S_wipe_trauma")
+
+[node name="MagicBar" type="Panel" parent="Wipe"]
+visible = false
+layout_mode = 0
+offset_left = -3000.0
+offset_top = -40.0
+offset_right = -400.0
+offset_bottom = 1120.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("S_wipe_magic")
+
+[node name="VoidBar" type="Panel" parent="Wipe"]
+visible = false
+layout_mode = 0
+offset_left = -3000.0
+offset_top = -40.0
+offset_right = -400.0
+offset_bottom = 1120.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("S_wipe_void")
