@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://rjfettb5cunf" path="res://scenes/world/door.tscn" id="3_sugp2"]
 [ext_resource type="PackedScene" path="res://scenes/ui/inventory.tscn" id="4_inv"]
 [ext_resource type="PackedScene" path="res://scenes/world/chest.tscn" id="6_tefeu"]
+[ext_resource type="PackedScene" path="res://scenes/world/damage_zone.tscn" id="7_zone"]
+[ext_resource type="PackedScene" path="res://scenes/ui/player_hud.tscn" id="8_hud"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0a554"]
 size = Vector3(50, 0.2, 50)
@@ -46,3 +48,19 @@ transform = Transform3D(-0.53755194, 0, 1.4003707, 0, 1.5, 0, -1.4003707, 0, -0.
 
 [node name="Chest" parent="." unique_id=1082503961 instance=ExtResource("6_tefeu")]
 transform = Transform3D(0.9246527, 0, -0.38081142, 0, 1, 0, 0.38081142, 0, 0.9246527, 1.9434431, 0, -2.402732)
+
+[node name="HeavyZone" parent="." instance=ExtResource("7_zone")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 2)
+ZoneName = "HEAVY"
+DamagePerHit = 40
+HitInterval = 2.0
+ZoneColor = Color(1, 0.25, 0.2, 0.35)
+
+[node name="LightZone" parent="." instance=ExtResource("7_zone")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 2)
+ZoneName = "LIGHT"
+DamagePerHit = 5
+HitInterval = 0.25
+ZoneColor = Color(1, 0.8, 0.2, 0.35)
+
+[node name="PlayerHud" parent="." instance=ExtResource("8_hud")]

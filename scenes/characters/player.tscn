@@ -3,6 +3,11 @@
 [ext_resource type="Texture2D" uid="uid://u1uli56gynpy" path="res://assets/sprites/Unarmed_Idle_with_shadow.png" id="2_dqkch"]
 [ext_resource type="Script" uid="uid://vakjxlcfgy6j" path="res://scripts/characters/Player.cs" id="2_script"]
 [ext_resource type="Texture2D" uid="uid://ddgd3xyscp3d3" path="res://assets/sprites/Unarmed_Walk_with_shadow.png" id="4_qlg0r"]
+[ext_resource type="Script" path="res://scripts/combat/HealthComponent.cs" id="5_health"]
+[ext_resource type="Script" path="res://scripts/items/Inventory.cs" id="6_inventory"]
+[ext_resource type="Script" path="res://scripts/items/ItemStack.cs" id="7_stack"]
+[ext_resource type="Resource" path="res://data/items/test_helmet.tres" id="8_helmet"]
+[ext_resource type="Resource" path="res://data/items/test_chestplate.tres" id="9_chest"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tuyoq"]
 atlas = ExtResource("2_dqkch")
@@ -365,8 +370,19 @@ height = 1.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ucufk"]
 
-[node name="Player" type="CharacterBody3D" unique_id=416896536]
+[sub_resource type="Resource" id="ItemStack_helmet"]
+script = ExtResource("7_stack")
+Item = ExtResource("8_helmet")
+Quantity = 1
+
+[sub_resource type="Resource" id="ItemStack_chest"]
+script = ExtResource("7_stack")
+Item = ExtResource("9_chest")
+Quantity = 1
+
+[node name="Player" type="CharacterBody3D" unique_id=416896536 groups=["player"]]
 script = ExtResource("2_script")
+StartingItems = Array[ExtResource("7_stack")]([SubResource("ItemStack_helmet"), SubResource("ItemStack_chest")])
 
 [node name="Sprite" type="AnimatedSprite3D" parent="." unique_id=1628848426]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
@@ -398,3 +414,11 @@ collision_mask = 4
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionArea" unique_id=561634360]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 shape = SubResource("SphereShape3D_ucufk")
+
+[node name="Health" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("5_health")
+
+[node name="Inventory" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("6_inventory")

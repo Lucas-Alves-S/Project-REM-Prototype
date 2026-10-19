@@ -1,11 +1,16 @@
+using System.Collections.Generic;
 using Godot;
+using ProjectREM.Combat;
 using ProjectREM.Combat.Rng;
 using ProjectREM.Interaction;
+using ProjectREM.Items;
 
 namespace ProjectREM.Characters;
 
-public partial class Player : CharacterBody3D
+public partial class Player : CharacterBody3D, IDamageable
 {
+	[Signal] public delegate void EquipmentChangedEventHandler();
+
 	[Export] public float Speed = 5.0f;
 	[Export] public float Acceleration = 60.0f;
 	[Export] public float Friction = 50.0f;
@@ -15,7 +20,18 @@ public partial class Player : CharacterBody3D
 	[Export] public float CritMultiplier { get; set; } = 1.5f;
 	[Export] public int CritBagCapacity { get; set; } = 20;
 
+	// K in reduction = armor / (armor + K): the armor value that halves incoming damage.
+	[Export] public float ArmorConstant { get; set; } = 100.0f;
+
+	[ExportGroup("Items")]
+	// Put into the inventory on spawn.
+	[Export] public Godot.Collections.Array<ItemStack> StartingItems { get; set; } = new();
+
 	public CritMarbleBag CritBag { get; private set; }
+	public HealthComponent Health { get; private set; }
+	public Inventory Inventory { get; private set; }
+
+	private readonly Dictionary<EquipmentSlot, EquipmentItem> _equipment = new();
 
 	// Sheet rows: 0 = facing the camera, 1 = side (left), 2 = up.
 	private static readonly StringName[][] Anims =
@@ -38,6 +54,13 @@ public partial class Player : CharacterBody3D
 		_sprite = GetNode<AnimatedSprite3D>("Sprite");
 		_interactionArea = GetNode<Area3D>("%InteractionArea");
 		CritBag = new CritMarbleBag(BaseCritChance, CritBagCapacity);
+		Health = GetNode<HealthComponent>("%Health");
+		Inventory = GetNode<Inventory>("%Inventory");
+
+		foreach (ItemStack stack in StartingItems)
+		{
+			if (stack?.Item != null) Inventory.AddItem(stack.Item, stack.Quantity);
+		}
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -140,5 +163,55 @@ public partial class Player : CharacterBody3D
 		}
 
 		return nearest_interactable;
+	}
+
+	public EquipmentItem GetEquipped(EquipmentSlot slot) => _equipment.GetValueOrDefault(slot);
+
+	public int TotalArmor
+	{
+		get
+		{
+			int total = 0;
+			foreach (EquipmentItem item in _equipment.Values)
+			{
+				if (item is Armor armor) total += armor.Defense;
+			}
+			return total;
+		}
+	}
+
+	// Called by EquipmentItem.Use after the inventory has already taken the item out.
+	// A piece already in that slot goes back to the inventory.
+	public bool Equip(EquipmentItem item)
+	{
+		if (_equipment.TryGetValue(item.Slot, out EquipmentItem current))
+		{
+			if (!Inventory.AddItem(current)) return false;
+		}
+
+		_equipment[item.Slot] = item;
+		EmitSignal(SignalName.EquipmentChanged);
+		return true;
+	}
+
+	public bool Unequip(EquipmentSlot slot)
+	{
+		if (!_equipment.TryGetValue(slot, out EquipmentItem item)) return false;
+		if (!Inventory.AddItem(item)) return false;
+
+		_equipment.Remove(slot);
+		EmitSignal(SignalName.EquipmentChanged);
+		return true;
+	}
+
+	public void TakeDamage(int rawDamage)
+	{
+		if (Health.IsDead) return;
+
+		int armor = TotalArmor;
+		int damage = DamageCalculator.ApplyArmor(rawDamage, armor, ArmorConstant);
+		float reduction = DamageCalculator.ArmorReduction(armor, ArmorConstant);
+		Health.TakeDamage(damage);
+		GD.Print($"Hit: {rawDamage} -> {damage} (armor {armor}, -{reduction:P1}) | HP {Health.CurrentHealth}/{Health.MaxHealth}");
 	}
 }
