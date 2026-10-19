@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Armor" format=3]
+
+[ext_resource type="Script" path="res://scripts/items/Armor.cs" id="1_armor"]
+
+[resource]
+script = ExtResource("1_armor")
+Defense = 25
+Slot = 0
+Id = "test_helmet"
+DisplayName = "Test Helmet"
+Description = "A dented practice helm. Exists to prove armor works."

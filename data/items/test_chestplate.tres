@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Armor" format=3]
+
+[ext_resource type="Script" path="res://scripts/items/Armor.cs" id="1_armor"]
+
+[resource]
+script = ExtResource("1_armor")
+Defense = 75
+Slot = 1
+Id = "test_chestplate"
+DisplayName = "Test Chestplate"
+Description = "Heavy training plate. Together with the helmet: 100 armor, half damage."
