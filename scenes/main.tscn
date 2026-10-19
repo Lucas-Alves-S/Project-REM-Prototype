@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://dy2cfofenkk1c"]
 
-[ext_resource type="PackedScene" uid="uid://i5nx0scdxcum" path="res://scenes/player.tscn" id="1_player"]
-[ext_resource type="PackedScene" uid="uid://brdndksoa8lft" path="res://scenes/default_npc.tscn" id="2_0wfyh"]
+[ext_resource type="PackedScene" uid="uid://i5nx0scdxcum" path="res://scenes/characters/player.tscn" id="1_player"]
+[ext_resource type="PackedScene" uid="uid://brdndksoa8lft" path="res://scenes/characters/default_npc.tscn" id="2_0wfyh"]
 [ext_resource type="Texture2D" uid="uid://lfi5vr41sw4j" path="res://assets/textures/missing_texture.png" id="2_jyhfs"]
-[ext_resource type="PackedScene" uid="uid://rjfettb5cunf" path="res://scenes/ambient/door.tscn" id="3_sugp2"]
+[ext_resource type="PackedScene" uid="uid://rjfettb5cunf" path="res://scenes/world/door.tscn" id="3_sugp2"]
 [ext_resource type="PackedScene" path="res://scenes/ui/inventory.tscn" id="4_inv"]
-[ext_resource type="PackedScene" path="res://scenes/ambient/chest.tscn" id="6_tefeu"]
+[ext_resource type="PackedScene" path="res://scenes/world/chest.tscn" id="6_tefeu"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0a554"]
 size = Vector3(50, 0.2, 50)

@@ -1,5 +1,8 @@
 using Godot;
 using ProjectREM.Combat.Rng;
+using ProjectREM.Interaction;
+
+namespace ProjectREM.Characters;
 
 public partial class Player : CharacterBody3D
 {

@@ -1,5 +1,7 @@
 using Godot;
 
+namespace ProjectREM.UI;
+
 // Inventory screen (docs/ui-mockups/Inventory.dc.html), toggled with the "inventory" action (E).
 // Layout only for now: there is no item system yet, so every slot shows as empty.
 // Runs with ProcessMode = Always because it pauses the tree while open, like DialogueBox.

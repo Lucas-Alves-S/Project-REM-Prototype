@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://rjfettb5cunf"]
 
 [ext_resource type="ArrayMesh" uid="uid://ctewdruk8ogcr" path="res://assets/models/Door5.obj" id="1_jdq55"]
-[ext_resource type="Script" uid="uid://bpiia6cq418nh" path="res://scripts/Door.cs" id="1_n3kua"]
-[ext_resource type="Script" uid="uid://br7jyr3ehxc80" path="res://scripts/InteractionArea.cs" id="2_iarea"]
+[ext_resource type="Script" uid="uid://bpiia6cq418nh" path="res://scripts/world/Door.cs" id="1_n3kua"]
+[ext_resource type="Script" uid="uid://br7jyr3ehxc80" path="res://scripts/interaction/InteractionArea.cs" id="2_iarea"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ucufk"]
 size = Vector3(0.08755493, 2.0397415, 0.80249023)

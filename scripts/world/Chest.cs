@@ -1,7 +1,11 @@
 using Godot;
 using Godot.Collections;
+using ProjectREM.Characters;
+using ProjectREM.Interaction;
 
-// Opens once and hands its contents to a reward screen. Like DialogArea, what it does comes from
+namespace ProjectREM.World;
+
+// Opens once and hands its contents to a reward screen. Like DialogueArea, what it does comes from
 // data: ContentsId picks an entry in ContentsFile, and that entry's "screen" field ("loot" or
 // "buffs") decides which screen opens. One chest scene, configured per instance in the inspector.
 public partial class Chest : Node3D, IInteractable

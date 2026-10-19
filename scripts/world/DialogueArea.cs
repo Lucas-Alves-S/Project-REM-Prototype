@@ -1,7 +1,12 @@
 using Godot;
 using System;
+using ProjectREM.Characters;
+using ProjectREM.Interaction;
+using ProjectREM.UI;
 
-public partial class DialogArea : Node3D, IInteractable
+namespace ProjectREM.World;
+
+public partial class DialogueArea : Node3D, IInteractable
 {
 	[Export] public Json DialogueFile { get; set; }
 	[Export] public string ConversationId { get; set; } = "";

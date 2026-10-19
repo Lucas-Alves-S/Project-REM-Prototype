@@ -1,5 +1,7 @@
 using Godot;
 
+namespace ProjectREM.UI;
+
 // Skewed title/pause menu button. Selection follows focus, and the mouse moves focus,
 // so keyboard and mouse never show two selected items at once.
 public partial class MenuItem : Button

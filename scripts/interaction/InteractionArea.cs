@@ -1,6 +1,8 @@
 using Godot;
 using System;
 
+namespace ProjectREM.Interaction;
+
 // Detection area the player looks for. Forwards interaction to its parent IInteractable.
 public partial class InteractionArea : Area3D
 {

@@ -1,0 +1,40 @@
+{
+    "dream_cache": {
+        "screen": "loot",
+        "title": "DREAM CACHE",
+        "rewards": [
+            { "name": "Dream Dust", "rarity": "common", "detail": "×24" },
+            { "name": "Lullaby Shard", "rarity": "rare", "detail": "Spell catalyst" },
+            { "name": "Moth-Wing Cloak", "rarity": "epic", "detail": "Cloak · +8 Guard" },
+            { "name": "Cracked Music Box", "rarity": "legendary", "detail": "Relic · Unique" }
+        ]
+    },
+    "resonance_room_1": {
+        "screen": "buffs",
+        "title": "CHOOSE A RESONANCE",
+        "subtitle": "ROOM CLEARED · 1 OF 3",
+        "rewards": [
+            {
+                "numeral": "XIII",
+                "arcana": "GRIEF",
+                "name": "Weeping Moon",
+                "effects": ["+15% Magic Damage", "Spells leave a pool of tears that slows enemies 30%"],
+                "quote": "The sky cried with me, so I wasn't alone."
+            },
+            {
+                "numeral": "IX",
+                "arcana": "SOLITUDE",
+                "name": "Locked Room",
+                "effects": ["−2s Dash Cooldown", "+1 Dash Charge"],
+                "quote": "If I stay in here, nothing can reach me."
+            },
+            {
+                "numeral": "XVII",
+                "arcana": "HOPE",
+                "name": "Paper Star",
+                "effects": ["+20 Max HP", "Heal 5 HP on room clear"],
+                "quote": "Some wishes survive being folded small."
+            }
+        ]
+    }
+}

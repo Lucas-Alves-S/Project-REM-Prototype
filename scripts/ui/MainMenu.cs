@@ -1,5 +1,7 @@
 using Godot;
 
+namespace ProjectREM.UI;
+
 // Title screen (docs/ui-mockups/Main.dc.html). Looping ambience is all Tweens; per-node
 // phase offsets come from each node's "delay" metadata, mirroring the mockup's negative
 // CSS animation-delay values.

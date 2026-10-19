@@ -1,5 +1,8 @@
 using Godot;
 using Godot.Collections;
+using ProjectREM.Characters;
+
+namespace ProjectREM.UI;
 
 // Autoloaded as "DialogueBox". Runs with ProcessMode = Always so it keeps working while the tree is paused.
 public partial class DialogueBox : CanvasLayer

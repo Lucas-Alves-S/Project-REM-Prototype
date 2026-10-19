@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://co3rx5f7d14o7"]
 
 [ext_resource type="Script" uid="uid://cvuoqopp71p74" path="res://scripts/ui/DialogueBox.cs" id="1_script"]
-[ext_resource type="Script" uid="uid://bh4f3vfqkc8np" path="res://scripts/CharacterData.cs" id="2_h44io"]
+[ext_resource type="Script" uid="uid://bh4f3vfqkc8np" path="res://scripts/characters/CharacterData.cs" id="2_h44io"]
 [ext_resource type="Resource" uid="uid://ctvmxggx2wha3" path="res://data/characters/default_npc.tres" id="2_npc"]
 [ext_resource type="Resource" uid="uid://8aufo3ilwk5w" path="res://data/characters/player.tres" id="3_player"]
 [ext_resource type="Texture2D" uid="uid://cyocewfssjuil" path="res://assets/ui/continue_shard.svg" id="4_shard"]

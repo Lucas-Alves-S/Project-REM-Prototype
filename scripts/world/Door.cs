@@ -1,5 +1,9 @@
 using System;
 using Godot;
+using ProjectREM.Characters;
+using ProjectREM.Interaction;
+
+namespace ProjectREM.World;
 
 public partial class Door : Node3D, IInteractable
 {

@@ -1,8 +1,8 @@
 [gd_scene format=3]
 
-[ext_resource type="Script" path="res://scripts/Chest.cs" id="1_chest"]
+[ext_resource type="Script" path="res://scripts/world/Chest.cs" id="1_chest"]
 [ext_resource type="JSON" path="res://data/chests/sample_chests.json" id="2_contents"]
-[ext_resource type="Script" path="res://scripts/InteractionArea.cs" id="3_iarea"]
+[ext_resource type="Script" path="res://scripts/interaction/InteractionArea.cs" id="3_iarea"]
 
 [sub_resource type="StandardMaterial3D" id="Material_wood"]
 albedo_color = Color(0.42, 0.26, 0.13, 1)

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="CharacterData" format=3 uid="uid://8aufo3ilwk5w"]
 
-[ext_resource type="Script" uid="uid://bh4f3vfqkc8np" path="res://scripts/CharacterData.cs" id="1_script"]
+[ext_resource type="Script" uid="uid://bh4f3vfqkc8np" path="res://scripts/characters/CharacterData.cs" id="1_script"]
 [ext_resource type="Texture2D" uid="uid://b02jpok2b7v4k" path="res://assets/portraits/player/Aggression.png" id="2_portrait"]
 [ext_resource type="Texture2D" uid="uid://br5qqv5yv71mi" path="res://assets/portraits/player/Astonishment.png" id="3_portrait"]
 [ext_resource type="Texture2D" uid="uid://da7qmqj04kdxg" path="res://assets/portraits/player/Awkwardness.png" id="4_portrait"]

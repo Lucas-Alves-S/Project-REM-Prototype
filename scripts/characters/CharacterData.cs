@@ -1,6 +1,8 @@
 using Godot;
 using System;
 
+namespace ProjectREM.Characters;
+
 [GlobalClass]
 public partial class CharacterData : Resource
 {
