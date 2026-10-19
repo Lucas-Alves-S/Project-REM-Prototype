@@ -1,11 +1,18 @@
-using System.Data;
 using Godot;
+using ProjectREM.Combat.Rng;
 
 public partial class Player : CharacterBody3D
 {
 	[Export] public float Speed = 5.0f;
 	[Export] public float Acceleration = 60.0f;
 	[Export] public float Friction = 50.0f;
+
+	[ExportGroup("Combat Stats")]
+	[Export(PropertyHint.Range, "0.0,1.0,0.01")] public float BaseCritChance { get; set; } = 0.10f;
+	[Export] public float CritMultiplier { get; set; } = 1.5f;
+	[Export] public int CritBagCapacity { get; set; } = 20;
+
+	public CritMarbleBag CritBag { get; private set; }
 
 	// Sheet rows: 0 = facing the camera, 1 = side (left), 2 = up.
 	private static readonly StringName[][] Anims =
@@ -27,6 +34,7 @@ public partial class Player : CharacterBody3D
 	{
 		_sprite = GetNode<AnimatedSprite3D>("Sprite");
 		_interactionArea = GetNode<Area3D>("%InteractionArea");
+		CritBag = new CritMarbleBag(BaseCritChance, CritBagCapacity);
 	}
 
 	public override void _PhysicsProcess(double delta)
