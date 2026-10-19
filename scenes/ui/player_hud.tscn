@@ -1,0 +1,104 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/PlayerHud.cs" id="1_hud"]
+[ext_resource type="Resource" path="res://data/characters/player.tres" id="2_player"]
+
+[sub_resource type="StyleBoxFlat" id="Portrait_back"]
+bg_color = Color(0.0706, 0.1098, 0.2275, 1)
+
+[sub_resource type="StyleBoxFlat" id="Portrait_frame"]
+draw_center = false
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.6118, 0.7961, 1, 1)
+border_blend = false
+
+[sub_resource type="StyleBoxFlat" id="Hp_background"]
+bg_color = Color(0.102, 0.0471, 0.0627, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9608, 0.9529, 1, 0.2)
+skew = Vector2(0.364, 0)
+
+[sub_resource type="StyleBoxFlat" id="Hp_fill"]
+bg_color = Color(0.9608, 0.9529, 1, 1)
+skew = Vector2(0.364, 0)
+
+[node name="PlayerHud" type="CanvasLayer"]
+script = ExtResource("1_hud")
+Character = ExtResource("2_player")
+
+[node name="Root" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 48.0
+offset_top = -160.0
+offset_right = 556.0
+offset_bottom = -56.0
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="Portrait" type="Panel" parent="Root"]
+clip_children = 2
+layout_mode = 0
+offset_right = 104.0
+offset_bottom = 104.0
+rotation = 0.7853982
+pivot_offset = Vector2(52, 52)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Portrait_back")
+
+[node name="Face" type="TextureRect" parent="Root/Portrait"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -23.0
+offset_top = -23.0
+offset_right = 127.0
+offset_bottom = 127.0
+rotation = -0.7853982
+pivot_offset = Vector2(75, 75)
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Frame" type="Panel" parent="Root/Portrait"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Portrait_frame")
+
+[node name="Bars" type="VBoxContainer" parent="Root"]
+layout_mode = 0
+offset_left = 124.0
+offset_right = 508.0
+offset_bottom = 104.0
+mouse_filter = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="HpBar" type="ProgressBar" parent="Root/Bars"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(360, 22)
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_filter = 2
+theme_override_styles/background = SubResource("Hp_background")
+theme_override_styles/fill = SubResource("Hp_fill")
+value = 100.0
+show_percentage = false
+
+[node name="Stats" type="Label" parent="Root/Bars"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"TagLabel"
+text = "HP 100/100"
