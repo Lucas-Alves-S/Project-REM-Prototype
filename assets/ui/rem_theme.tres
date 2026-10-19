@@ -31,7 +31,7 @@ skew = Vector2(0.21, 0)
 corner_radius_top_left = 12
 corner_radius_bottom_right = 12
 corner_detail = 1
-shadow_color = Color(1, 0.1804, 0.5333, 1)
+shadow_color = Color(0.1843, 0.4824, 1, 1)
 shadow_size = 1
 shadow_offset = Vector2(8, 8)
 
@@ -88,12 +88,12 @@ content_margin_bottom = 10.0
 bg_color = Color(0.9608, 0.9529, 1, 1)
 skew = Vector2(0.21, 0)
 
-[sub_resource type="StyleBoxFlat" id="Menu_shadow_magic"]
-bg_color = Color(0.1804, 0.949, 0.8784, 1)
+[sub_resource type="StyleBoxFlat" id="Menu_shadow_ice"]
+bg_color = Color(0.6118, 0.7961, 1, 1)
 skew = Vector2(0.21, 0)
 
-[sub_resource type="StyleBoxFlat" id="Menu_shadow_trauma"]
-bg_color = Color(1, 0.1804, 0.5333, 1)
+[sub_resource type="StyleBoxFlat" id="Menu_shadow_blue"]
+bg_color = Color(0.1843, 0.4824, 1, 1)
 skew = Vector2(0.21, 0)
 
 [sub_resource type="StyleBoxFlat" id="NameTag_panel"]
@@ -103,7 +103,7 @@ content_margin_right = 30.0
 content_margin_bottom = 4.0
 bg_color = Color(0.9608, 0.9529, 1, 1)
 skew = Vector2(0.21, 0)
-shadow_color = Color(1, 0.1804, 0.5333, 1)
+shadow_color = Color(0.1843, 0.4824, 1, 1)
 shadow_size = 1
 shadow_offset = Vector2(8, 8)
 
@@ -123,7 +123,7 @@ corner_radius_bottom_right = 12
 corner_detail = 1
 
 [sub_resource type="StyleBoxFlat" id="Slot_selected"]
-bg_color = Color(0.1373, 0.1137, 0.3216, 1)
+bg_color = Color(0.0863, 0.1608, 0.3608, 1)
 border_width_left = 4
 border_width_top = 4
 border_width_right = 4
@@ -134,7 +134,7 @@ corner_radius_bottom_right = 12
 corner_detail = 1
 
 [sub_resource type="StyleBoxFlat" id="Slot_hover"]
-bg_color = Color(0.1098, 0.098, 0.2745, 1)
+bg_color = Color(0.0784, 0.1412, 0.3137, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
@@ -151,7 +151,7 @@ border_width_left = 3
 border_width_top = 3
 border_width_right = 3
 border_width_bottom = 3
-border_color = Color(0.1804, 0.949, 0.8784, 1)
+border_color = Color(0.6118, 0.7961, 1, 1)
 expand_margin_left = 4.0
 expand_margin_top = 4.0
 expand_margin_right = 4.0
@@ -164,7 +164,7 @@ content_margin_right = 22.0
 content_margin_bottom = 6.0
 bg_color = Color(0.9608, 0.9529, 1, 1)
 skew = Vector2(0.21, 0)
-shadow_color = Color(1, 0.1804, 0.5333, 1)
+shadow_color = Color(0.1843, 0.4824, 1, 1)
 shadow_size = 1
 shadow_offset = Vector2(6, 6)
 
@@ -175,7 +175,7 @@ content_margin_right = 24.0
 content_margin_bottom = 24.0
 bg_color = Color(0.0275, 0.0314, 0.0863, 0.9)
 border_width_left = 4
-border_color = Color(1, 0.1804, 0.5333, 1)
+border_color = Color(0.1843, 0.4824, 1, 1)
 corner_radius_top_right = 24
 corner_detail = 1
 
@@ -198,7 +198,7 @@ Button/styles/normal = SubResource("Btn_normal")
 Button/styles/pressed = SubResource("Btn_selected")
 DisplayLabel/base_type = &"Label"
 DisplayLabel/colors/font_color = Color(0.9608, 0.9529, 1, 1)
-DisplayLabel/colors/font_shadow_color = Color(1, 0.1804, 0.5333, 1)
+DisplayLabel/colors/font_shadow_color = Color(0.1843, 0.4824, 1, 1)
 DisplayLabel/constants/shadow_offset_x = 6
 DisplayLabel/constants/shadow_offset_y = 6
 DisplayLabel/font_sizes/font_size = 72
@@ -229,8 +229,8 @@ MenuItem/styles/hover = SubResource("Menu_selected")
 MenuItem/styles/hover_pressed = SubResource("Menu_selected")
 MenuItem/styles/normal = SubResource("Menu_normal")
 MenuItem/styles/pressed = SubResource("Menu_selected")
-MenuItem/styles/shadow_magic = SubResource("Menu_shadow_magic")
-MenuItem/styles/shadow_trauma = SubResource("Menu_shadow_trauma")
+MenuItem/styles/shadow_ice = SubResource("Menu_shadow_ice")
+MenuItem/styles/shadow_blue = SubResource("Menu_shadow_blue")
 NameTag/base_type = &"PanelContainer"
 NameTag/styles/panel = SubResource("NameTag_panel")
 NameTagLabel/base_type = &"Label"

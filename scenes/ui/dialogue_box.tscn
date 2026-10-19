@@ -84,7 +84,7 @@ offset_top = 760.0
 offset_right = 1840.0
 offset_bottom = 763.0
 mouse_filter = 2
-color = Color(0.1804, 0.949, 0.8784, 1)
+color = Color(0.6118, 0.7961, 1, 1)
 
 [node name="BoxBottomLine" type="ColorRect" parent="Root/Stage" unique_id=1712804604]
 layout_mode = 0
@@ -93,7 +93,7 @@ offset_top = 1000.0
 offset_right = 1800.0
 offset_bottom = 1004.0
 mouse_filter = 2
-color = Color(1, 0.1804, 0.5333, 1)
+color = Color(0.1843, 0.4824, 1, 1)
 
 [node name="Header" type="HBoxContainer" parent="Root/Stage" unique_id=1533587188]
 layout_mode = 0
@@ -121,7 +121,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 8
 theme_type_variation = &"TagLabel"
-theme_override_colors/font_color = Color(0.1804, 0.949, 0.8784, 1)
+theme_override_colors/font_color = Color(0.6118, 0.7961, 1, 1)
 theme_override_font_sizes/font_size = 20
 text = "THE DREAMER"
 

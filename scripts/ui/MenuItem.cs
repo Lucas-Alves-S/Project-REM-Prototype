@@ -14,8 +14,8 @@ public partial class MenuItem : Button
 	private const double SelectTime = 0.18;
 
 	private Vector2 _restPosition;
-	private Panel _shadowTrauma;
-	private Panel _shadowMagic;
+	private Panel _shadowBlue;
+	private Panel _shadowIce;
 	private Tween _tween;
 
 	public override void _Ready()
@@ -24,9 +24,9 @@ public partial class MenuItem : Button
 		_restPosition = Position;
 
 		// StyleBoxFlat only has one, soft shadow; the mockup wants two hard ones
-		// (12px magenta down-right, 6px cyan up-left), so draw them as panels behind the button.
-		_shadowMagic = AddShadow("shadow_magic", new Vector2(-6, -6));
-		_shadowTrauma = AddShadow("shadow_trauma", new Vector2(12, 12));
+		// (12px REM blue down-right, 6px ice up-left), so draw them as panels behind the button.
+		_shadowIce = AddShadow("shadow_ice", new Vector2(-6, -6));
+		_shadowBlue = AddShadow("shadow_blue", new Vector2(12, 12));
 
 		FocusEntered += () => SetSelected(true);
 		FocusExited += () => SetSelected(false);
@@ -58,8 +58,8 @@ public partial class MenuItem : Button
 
 	private void SetSelected(bool selected)
 	{
-		_shadowTrauma.Visible = selected;
-		_shadowMagic.Visible = selected;
+		_shadowBlue.Visible = selected;
+		_shadowIce.Visible = selected;
 
 		_tween?.Kill();
 		_tween = CreateTween().SetParallel().SetTrans(Tween.TransitionType.Back).SetEase(Tween.EaseType.Out);

@@ -160,7 +160,7 @@ public partial class DialogueBox : CanvasLayer
 			_lastSpeaker = speaker;
 		}
 
-		// Text is BBCode, so lines can highlight words, e.g. [color=#ff2e88]finally open[/color].
+		// Text is BBCode, so lines can highlight words, e.g. [color=#2f7bff]finally open[/color].
 		_text.Text = text;
 		_text.VisibleRatio = 0.0f;
 		SetContinueVisible(false);

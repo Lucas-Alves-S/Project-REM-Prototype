@@ -5,7 +5,7 @@
 
 [sub_resource type="Gradient" id="G_bg"]
 offsets = PackedFloat32Array(0, 0.45, 1)
-colors = PackedColorArray(0.1647, 0.0784, 0.3137, 1, 0.0549, 0.0784, 0.1882, 1, 0.0196, 0.0235, 0.0588, 1)
+colors = PackedColorArray(0.0588, 0.1647, 0.3608, 1, 0.0549, 0.0784, 0.1882, 1, 0.0196, 0.0235, 0.0588, 1)
 
 [sub_resource type="GradientTexture2D" id="T_bg"]
 gradient = SubResource("G_bg")
@@ -17,7 +17,7 @@ fill_to = Vector2(1, 0)
 
 [sub_resource type="Gradient" id="G_pedestal"]
 offsets = PackedFloat32Array(0, 0.6, 0.7)
-colors = PackedColorArray(0.1804, 0.949, 0.8784, 0.45, 0.1804, 0.949, 0.8784, 0.05, 0.1804, 0.949, 0.8784, 0)
+colors = PackedColorArray(0.6118, 0.7961, 1, 0.45, 0.6118, 0.7961, 1, 0.05, 0.6118, 0.7961, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="T_pedestal"]
 gradient = SubResource("G_pedestal")
@@ -29,7 +29,7 @@ fill_to = Vector2(1, 0.5)
 
 [sub_resource type="Gradient" id="G_ring"]
 offsets = PackedFloat32Array(0, 0.9, 0.95, 1)
-colors = PackedColorArray(0.1804, 0.949, 0.8784, 0, 0.1804, 0.949, 0.8784, 0, 0.1804, 0.949, 0.8784, 0.7, 0.1804, 0.949, 0.8784, 0)
+colors = PackedColorArray(0.6118, 0.7961, 1, 0, 0.6118, 0.7961, 1, 0, 0.6118, 0.7961, 1, 0.7, 0.6118, 0.7961, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="T_ring"]
 gradient = SubResource("G_ring")
@@ -42,7 +42,7 @@ fill_to = Vector2(1, 0.5)
 [sub_resource type="ButtonGroup" id="BG_tabs"]
 
 [sub_resource type="StyleBoxFlat" id="S_sweep"]
-bg_color = Color(1, 0.1804, 0.5333, 1)
+bg_color = Color(0.1843, 0.4824, 1, 1)
 skew = Vector2(0.21, 0)
 
 [node name="Inventory" type="CanvasLayer"]
@@ -336,7 +336,7 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"TagLabel"
-theme_override_colors/font_color = Color(0.1804, 0.949, 0.8784, 1)
+theme_override_colors/font_color = Color(0.6118, 0.7961, 1, 1)
 text = "—"
 
 [node name="BottomBand" type="ColorRect" parent="Root"]
@@ -359,7 +359,7 @@ offset_bottom = 880.0
 rotation = -0.0174533
 pivot_offset = Vector2(1100, 89)
 mouse_filter = 2
-color = Color(1, 0.1804, 0.5333, 1)
+color = Color(0.1843, 0.4824, 1, 1)
 
 [node name="InHand" type="Label" parent="Root"]
 layout_mode = 0

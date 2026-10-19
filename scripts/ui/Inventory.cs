@@ -119,7 +119,7 @@ public partial class Inventory : CanvasLayer
 		_tween = CreateTween().SetParallel().SetTrans(Tween.TransitionType.Quint).SetEase(Tween.EaseType.InOut);
 		_tween.TweenProperty(_root, "modulate:a", 1.0f, OpenTime).From(0.0f);
 		_tween.TweenProperty(_root, "position:x", 0.0f, OpenTime).From(-SlideDistance);
-		// A magenta slash leads the panel across the screen.
+		// A blue slash leads the panel across the screen.
 		float width = _root.Size.X;
 		_sweep.Visible = true;
 		_tween.TweenProperty(_sweep, "position:x", width, OpenTime).From(-_sweep.Size.X);
