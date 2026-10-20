@@ -88,12 +88,12 @@ content_margin_bottom = 10.0
 bg_color = Color(0.9608, 0.9529, 1, 1)
 skew = Vector2(0.21, 0)
 
-[sub_resource type="StyleBoxFlat" id="Menu_shadow_ice"]
-bg_color = Color(0.6118, 0.7961, 1, 1)
-skew = Vector2(0.21, 0)
-
 [sub_resource type="StyleBoxFlat" id="Menu_shadow_blue"]
 bg_color = Color(0.1843, 0.4824, 1, 1)
+skew = Vector2(0.21, 0)
+
+[sub_resource type="StyleBoxFlat" id="Menu_shadow_ice"]
+bg_color = Color(0.6118, 0.7961, 1, 1)
 skew = Vector2(0.21, 0)
 
 [sub_resource type="StyleBoxFlat" id="NameTag_panel"]
@@ -179,6 +179,31 @@ border_color = Color(0.1843, 0.4824, 1, 1)
 corner_radius_top_right = 24
 corner_detail = 1
 
+[sub_resource type="StyleBoxFlat" id="Wake_item_selected"]
+content_margin_left = 26.0
+content_margin_top = 8.0
+content_margin_right = 40.0
+content_margin_bottom = 10.0
+bg_color = Color(0.0549, 0.0784, 0.1882, 1)
+skew = Vector2(0.21, 0)
+
+[sub_resource type="StyleBoxFlat" id="Wake_item_normal"]
+content_margin_left = 26.0
+content_margin_top = 8.0
+content_margin_right = 40.0
+content_margin_bottom = 10.0
+bg_color = Color(0.0549, 0.0784, 0.1882, 0)
+skew = Vector2(0.21, 0)
+
+[sub_resource type="StyleBoxFlat" id="Wake_stat_tile"]
+content_margin_left = 28.0
+content_margin_top = 18.0
+content_margin_right = 24.0
+content_margin_bottom = 18.0
+bg_color = Color(1, 1, 1, 0.72)
+border_width_left = 4
+border_color = Color(0.1843, 0.4824, 1, 1)
+
 [resource]
 default_font = ExtResource("1_body")
 default_font_size = 22
@@ -229,8 +254,8 @@ MenuItem/styles/hover = SubResource("Menu_selected")
 MenuItem/styles/hover_pressed = SubResource("Menu_selected")
 MenuItem/styles/normal = SubResource("Menu_normal")
 MenuItem/styles/pressed = SubResource("Menu_selected")
-MenuItem/styles/shadow_ice = SubResource("Menu_shadow_ice")
 MenuItem/styles/shadow_blue = SubResource("Menu_shadow_blue")
+MenuItem/styles/shadow_ice = SubResource("Menu_shadow_ice")
 NameTag/base_type = &"PanelContainer"
 NameTag/styles/panel = SubResource("NameTag_panel")
 NameTagLabel/base_type = &"Label"
@@ -264,3 +289,26 @@ TagLabel/font_sizes/font_size = 18
 TagLabel/fonts/font = SubResource("FV_tag")
 TooltipPanel/base_type = &"PanelContainer"
 TooltipPanel/styles/panel = SubResource("Tooltip_panel")
+WakeItem/base_type = &"Button"
+WakeItem/colors/font_color = Color(0.2902, 0.3333, 0.4706, 1)
+WakeItem/colors/font_focus_color = Color(0.9608, 0.9529, 1, 1)
+WakeItem/colors/font_hover_color = Color(0.9608, 0.9529, 1, 1)
+WakeItem/colors/font_hover_pressed_color = Color(0.9608, 0.9529, 1, 1)
+WakeItem/colors/font_pressed_color = Color(0.9608, 0.9529, 1, 1)
+WakeItem/font_sizes/font_size = 64
+WakeItem/styles/focus = SubResource("Wake_item_selected")
+WakeItem/styles/hover = SubResource("Wake_item_selected")
+WakeItem/styles/hover_pressed = SubResource("Wake_item_selected")
+WakeItem/styles/normal = SubResource("Wake_item_normal")
+WakeItem/styles/pressed = SubResource("Wake_item_selected")
+WakeItem/styles/shadow_blue = SubResource("Menu_shadow_blue")
+WakeStatLabel/base_type = &"Label"
+WakeStatLabel/colors/font_color = Color(0.2902, 0.3333, 0.4706, 1)
+WakeStatLabel/font_sizes/font_size = 18
+WakeStatLabel/fonts/font = SubResource("FV_tag")
+WakeStatTile/base_type = &"PanelContainer"
+WakeStatTile/styles/panel = SubResource("Wake_stat_tile")
+WakeStatValue/base_type = &"Label"
+WakeStatValue/colors/font_color = Color(0.0549, 0.0784, 0.1882, 1)
+WakeStatValue/font_sizes/font_size = 46
+WakeStatValue/fonts/font = ExtResource("5_label")
