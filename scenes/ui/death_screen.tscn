@@ -1,0 +1,368 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/DeathScreen.cs" id="1_death"]
+[ext_resource type="Script" path="res://scripts/ui/MenuItem.cs" id="2_item"]
+[ext_resource type="FontFile" uid="uid://bdqoc838o4245" path="res://assets/fonts/BarlowCondensed-Bold.ttf" id="3_bold"]
+
+[sub_resource type="Gradient" id="G_sky"]
+offsets = PackedFloat32Array(0, 0.55, 1)
+colors = PackedColorArray(0.9686, 0.9765, 1, 1, 0.8902, 0.9216, 0.9843, 1, 0.7176, 0.7882, 0.9333, 1)
+
+[sub_resource type="GradientTexture2D" id="T_sky"]
+gradient = SubResource("G_sky")
+width = 4
+height = 256
+fill_to = Vector2(0, 1)
+
+[sub_resource type="Gradient" id="G_sun"]
+offsets = PackedFloat32Array(0, 0.65)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="T_sun"]
+gradient = SubResource("G_sun")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="Gradient" id="G_shaft"]
+offsets = PackedFloat32Array(0, 0.25, 0.75, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="T_shaft"]
+gradient = SubResource("G_shaft")
+width = 64
+height = 4
+
+[sub_resource type="Gradient" id="G_shade"]
+colors = PackedColorArray(0.0549, 0.0784, 0.1882, 0, 0.0549, 0.0784, 0.1882, 0.35)
+
+[sub_resource type="GradientTexture2D" id="T_shade"]
+gradient = SubResource("G_shade")
+width = 4
+height = 64
+fill_to = Vector2(0, 1)
+
+[sub_resource type="FontVariation" id="FV_header"]
+base_font = ExtResource("3_bold")
+spacing_glyph = 7
+
+[sub_resource type="StyleBoxFlat" id="S_woken"]
+content_margin_left = 24.0
+content_margin_top = 18.0
+content_margin_right = 24.0
+content_margin_bottom = 18.0
+bg_color = Color(0.0549, 0.0784, 0.1882, 1)
+skew = Vector2(0.21, 0)
+
+[sub_resource type="StyleBoxFlat" id="S_key"]
+content_margin_left = 8.0
+content_margin_right = 8.0
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.0549, 0.0784, 0.1882, 1)
+
+[node name="DeathScreen" type="CanvasLayer"]
+process_mode = 3
+layer = 20
+script = ExtResource("1_death")
+
+[node name="Root" type="Control" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sky" type="TextureRect" parent="Root"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("T_sky")
+expand_mode = 1
+
+[node name="Sun" type="TextureRect" parent="Root"]
+layout_mode = 0
+offset_left = -200.0
+offset_top = -260.0
+offset_right = 700.0
+offset_bottom = 640.0
+mouse_filter = 2
+texture = SubResource("T_sun")
+expand_mode = 1
+
+[node name="Shafts" type="Control" parent="Root"]
+unique_name_in_owner = true
+anchors_preset = 0
+mouse_filter = 2
+
+[node name="Shaft1" type="TextureRect" parent="Root/Shafts"]
+self_modulate = Color(1, 1, 1, 0.75)
+layout_mode = 0
+offset_left = 166.0
+offset_top = -120.0
+offset_right = 344.0
+offset_bottom = 1280.0
+rotation = -0.418879
+mouse_filter = 2
+texture = SubResource("T_shaft")
+expand_mode = 1
+metadata/delay = 0.0
+
+[node name="Shaft2" type="TextureRect" parent="Root/Shafts"]
+self_modulate = Color(1, 1, 1, 0.6)
+layout_mode = 0
+offset_left = 406.0
+offset_top = -120.0
+offset_right = 524.0
+offset_bottom = 1280.0
+rotation = -0.418879
+mouse_filter = 2
+texture = SubResource("T_shaft")
+expand_mode = 1
+metadata/delay = 2.0
+
+[node name="Shaft3" type="TextureRect" parent="Root/Shafts"]
+self_modulate = Color(1, 1, 1, 0.55)
+layout_mode = 0
+offset_left = 582.0
+offset_top = -120.0
+offset_right = 818.0
+offset_bottom = 1280.0
+rotation = -0.418879
+mouse_filter = 2
+texture = SubResource("T_shaft")
+expand_mode = 1
+metadata/delay = 4.0
+
+[node name="BottomShade" type="TextureRect" parent="Root"]
+layout_mode = 0
+offset_top = 960.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
+texture = SubResource("T_shade")
+expand_mode = 1
+
+[node name="Slash" type="Control" parent="Root"]
+anchors_preset = 0
+offset_left = 1180.0
+offset_top = -200.0
+offset_right = 2380.0
+offset_bottom = 1400.0
+rotation = 0.244346
+mouse_filter = 2
+
+[node name="BlueEdge" type="ColorRect" parent="Root/Slash"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = -8.0
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.1843, 0.4824, 1, 1)
+
+[node name="Panel" type="ColorRect" parent="Root/Slash"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.0549, 0.0784, 0.1882, 0.06)
+
+[node name="Header" type="Label" parent="Root"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 124.0
+offset_top = 96.0
+offset_right = 1124.0
+offset_bottom = 124.0
+theme_override_colors/font_color = Color(0.1843, 0.4824, 1, 1)
+theme_override_fonts/font = SubResource("FV_header")
+theme_override_font_sizes/font_size = 22
+text = "DREAM 01 · ENDED ON FLOOR 1-1"
+
+[node name="Message" type="Label" parent="Root"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 110.0
+offset_top = 140.0
+offset_right = 1810.0
+offset_bottom = 400.0
+theme_type_variation = &"DisplayLabel"
+theme_override_colors/font_color = Color(0.0549, 0.0784, 0.1882, 1)
+theme_override_colors/font_shadow_color = Color(0.6118, 0.7961, 1, 1)
+theme_override_constants/shadow_offset_x = 8
+theme_override_constants/shadow_offset_y = 8
+theme_override_font_sizes/font_size = 220
+text = "Good Morning"
+uppercase = true
+
+[node name="StatsGrid" type="GridContainer" parent="Root"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 124.0
+offset_top = 480.0
+offset_right = 1024.0
+offset_bottom = 720.0
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 16
+columns = 3
+
+[node name="WokenBy" type="PanelContainer" parent="Root"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 124.0
+offset_top = 796.0
+offset_right = 1024.0
+offset_bottom = 876.0
+theme_override_styles/panel = SubResource("S_woken")
+
+[node name="Row" type="HBoxContainer" parent="Root/WokenBy"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Root/WokenBy/Row"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_type_variation = &"TagLabel"
+theme_override_colors/font_color = Color(0.6118, 0.7961, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "WOKEN BY"
+
+[node name="WokenByName" type="Label" parent="Root/WokenBy/Row"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"DisplayLabel"
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
+theme_override_font_sizes/font_size = 34
+text = "THE NIGHTMARE"
+horizontal_alignment = 2
+
+[node name="Kept" type="HBoxContainer" parent="Root"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 124.0
+offset_top = 900.0
+offset_right = 1024.0
+offset_bottom = 942.0
+theme_override_constants/separation = 40
+
+[node name="Label" type="Label" parent="Root/Kept"]
+layout_mode = 2
+theme_type_variation = &"WakeStatLabel"
+text = "KEPT FROM THE DREAM"
+
+[node name="DreamDust" type="Label" parent="Root/Kept"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"WakeStatValue"
+theme_override_colors/font_color = Color(0.1843, 0.4824, 1, 1)
+theme_override_font_sizes/font_size = 34
+text = "0 DREAM DUST"
+
+[node name="Memories" type="Label" parent="Root/Kept"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"WakeStatValue"
+theme_override_colors/font_color = Color(0.1843, 0.4824, 1, 1)
+theme_override_font_sizes/font_size = 34
+text = "0 MEMORIES"
+
+[node name="Menu" type="Control" parent="Root"]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_left = 1290.0
+offset_top = 520.0
+offset_right = 1290.0
+offset_bottom = 520.0
+
+[node name="NewRunButton" type="Button" parent="Root/Menu"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 10.0
+offset_bottom = 10.0
+focus_neighbor_top = NodePath("../QuitButton")
+theme_type_variation = &"WakeItem"
+text = "NEW RUN"
+script = ExtResource("2_item")
+Nudge = -24.0
+
+[node name="MainMenuButton" type="Button" parent="Root/Menu"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 34.0
+offset_top = 110.0
+offset_right = 44.0
+offset_bottom = 120.0
+theme_type_variation = &"WakeItem"
+text = "MAIN MENU"
+script = ExtResource("2_item")
+Nudge = -24.0
+
+[node name="QuitButton" type="Button" parent="Root/Menu"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 68.0
+offset_top = 220.0
+offset_right = 78.0
+offset_bottom = 230.0
+focus_neighbor_bottom = NodePath("../NewRunButton")
+theme_type_variation = &"WakeItem"
+text = "QUIT GAME"
+script = ExtResource("2_item")
+Nudge = -24.0
+
+[node name="Hints" type="HBoxContainer" parent="Root"]
+layout_mode = 0
+offset_left = 1300.0
+offset_top = 1010.0
+offset_right = 1700.0
+offset_bottom = 1040.0
+theme_override_constants/separation = 8
+
+[node name="EnterKey" type="Label" parent="Root/Hints"]
+layout_mode = 2
+theme_type_variation = &"KeyHint"
+theme_override_colors/font_color = Color(0.0549, 0.0784, 0.1882, 1)
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("S_key")
+text = "ENTER"
+
+[node name="EnterLabel" type="Label" parent="Root/Hints"]
+layout_mode = 2
+theme_type_variation = &"TagLabel"
+theme_override_colors/font_color = Color(0.0549, 0.0784, 0.1882, 1)
+text = "SELECT"
+
+[node name="Gap" type="Control" parent="Root/Hints"]
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="RKey" type="Label" parent="Root/Hints"]
+layout_mode = 2
+theme_type_variation = &"KeyHint"
+theme_override_colors/font_color = Color(0.0549, 0.0784, 0.1882, 1)
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("S_key")
+text = "R"
+
+[node name="RLabel" type="Label" parent="Root/Hints"]
+layout_mode = 2
+theme_type_variation = &"TagLabel"
+theme_override_colors/font_color = Color(0.0549, 0.0784, 0.1882, 1)
+text = "NEW RUN"
