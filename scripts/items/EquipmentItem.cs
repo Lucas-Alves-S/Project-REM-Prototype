@@ -7,7 +7,8 @@ namespace ProjectREM.Items;
 [GlobalClass]
 public abstract partial class EquipmentItem : Item
 {
-	[Export] public EquipmentSlot Slot { get; set; }
+    [Export]
+    public EquipmentSlot Slot { get; set; }
 
-	public override bool Use(Player player) => player.Equip(this);
+    public override bool Use(Player player) => player.Equip(this);
 }

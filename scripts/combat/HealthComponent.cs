@@ -7,33 +7,40 @@ namespace ProjectREM.Combat;
 [GlobalClass]
 public partial class HealthComponent : Node
 {
-	[Signal] public delegate void HealthChangedEventHandler(int current, int max);
-	[Signal] public delegate void DiedEventHandler();
+    [Signal]
+    public delegate void HealthChangedEventHandler(int current, int max);
 
-	[Export] public int MaxHealth { get; set; } = 100;
+    [Signal]
+    public delegate void DiedEventHandler();
 
-	public int CurrentHealth { get; private set; }
-	public bool IsDead => CurrentHealth <= 0;
+    [Export]
+    public int MaxHealth { get; set; } = 100;
 
-	public override void _Ready()
-	{
-		CurrentHealth = MaxHealth;
-	}
+    public int CurrentHealth { get; private set; }
+    public bool IsDead => CurrentHealth <= 0;
 
-	public void TakeDamage(int amount)
-	{
-		if (IsDead || amount <= 0) return;
+    public override void _Ready()
+    {
+        CurrentHealth = MaxHealth;
+    }
 
-		CurrentHealth = Mathf.Max(CurrentHealth - amount, 0);
-		EmitSignal(SignalName.HealthChanged, CurrentHealth, MaxHealth);
-		if (IsDead) EmitSignal(SignalName.Died);
-	}
+    public void TakeDamage(int amount)
+    {
+        if (IsDead || amount <= 0)
+            return;
 
-	public void Heal(int amount)
-	{
-		if (IsDead || amount <= 0) return;
+        CurrentHealth = Mathf.Max(CurrentHealth - amount, 0);
+        EmitSignal(SignalName.HealthChanged, CurrentHealth, MaxHealth);
+        if (IsDead)
+            EmitSignal(SignalName.Died);
+    }
 
-		CurrentHealth = Mathf.Min(CurrentHealth + amount, MaxHealth);
-		EmitSignal(SignalName.HealthChanged, CurrentHealth, MaxHealth);
-	}
+    public void Heal(int amount)
+    {
+        if (IsDead || amount <= 0)
+            return;
+
+        CurrentHealth = Mathf.Min(CurrentHealth + amount, MaxHealth);
+        EmitSignal(SignalName.HealthChanged, CurrentHealth, MaxHealth);
+    }
 }

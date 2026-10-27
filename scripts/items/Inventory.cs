@@ -8,123 +8,141 @@ namespace ProjectREM.Items;
 [GlobalClass]
 public partial class Inventory : Node
 {
-	[Signal] public delegate void InventoryChangedEventHandler();
+    [Signal]
+    public delegate void InventoryChangedEventHandler();
 
-	[Export] public int Capacity { get; set; } = 24;
+    [Export]
+    public int Capacity { get; set; } = 24;
 
-	private ItemStack[] _slots;
+    private ItemStack[] _slots;
 
-	public override void _Ready()
-	{
-		_slots = new ItemStack[Capacity];
-	}
+    public override void _Ready()
+    {
+        _slots = new ItemStack[Capacity];
+    }
 
-	public ItemStack GetSlot(int index) => _slots[index];
+    public ItemStack GetSlot(int index) => _slots[index];
 
-	public int UsedSlots
-	{
-		get
-		{
-			int used = 0;
-			foreach (ItemStack stack in _slots)
-			{
-				if (stack != null) used++;
-			}
-			return used;
-		}
-	}
+    public int UsedSlots
+    {
+        get
+        {
+            int used = 0;
+            foreach (ItemStack stack in _slots)
+            {
+                if (stack != null)
+                    used++;
+            }
+            return used;
+        }
+    }
 
-	// Tops up existing stacks first, then fills empty slots. All or nothing: returns false and
-	// leaves the inventory untouched if the whole amount doesn't fit.
-	public bool AddItem(Item item, int amount = 1)
-	{
-		if (item == null || amount <= 0) return false;
-		if (FreeSpaceFor(item) < amount) return false;
+    // Tops up existing stacks first, then fills empty slots. All or nothing: returns false and
+    // leaves the inventory untouched if the whole amount doesn't fit.
+    public bool AddItem(Item item, int amount = 1)
+    {
+        if (item == null || amount <= 0)
+            return false;
+        if (FreeSpaceFor(item) < amount)
+            return false;
 
-		for (int i = 0; i < _slots.Length && amount > 0; i++)
-		{
-			ItemStack stack = _slots[i];
-			if (stack == null || stack.Item != item || stack.IsFull()) continue;
+        for (int i = 0; i < _slots.Length && amount > 0; i++)
+        {
+            ItemStack stack = _slots[i];
+            if (stack == null || stack.Item != item || stack.IsFull())
+                continue;
 
-			int moved = Mathf.Min(amount, item.MaxStack - stack.Quantity);
-			stack.Quantity += moved;
-			amount -= moved;
-		}
+            int moved = Mathf.Min(amount, item.MaxStack - stack.Quantity);
+            stack.Quantity += moved;
+            amount -= moved;
+        }
 
-		for (int i = 0; i < _slots.Length && amount > 0; i++)
-		{
-			if (_slots[i] != null) continue;
+        for (int i = 0; i < _slots.Length && amount > 0; i++)
+        {
+            if (_slots[i] != null)
+                continue;
 
-			int moved = Mathf.Min(amount, item.MaxStack);
-			_slots[i] = new ItemStack(item, moved);
-			amount -= moved;
-		}
+            int moved = Mathf.Min(amount, item.MaxStack);
+            _slots[i] = new ItemStack(item, moved);
+            amount -= moved;
+        }
 
-		EmitSignal(SignalName.InventoryChanged);
-		return true;
-	}
+        EmitSignal(SignalName.InventoryChanged);
+        return true;
+    }
 
-	// All or nothing, like AddItem.
-	public bool RemoveItem(Item item, int amount = 1)
-	{
-		if (item == null || amount <= 0) return false;
-		if (CountOf(item) < amount) return false;
+    // All or nothing, like AddItem.
+    public bool RemoveItem(Item item, int amount = 1)
+    {
+        if (item == null || amount <= 0)
+            return false;
+        if (CountOf(item) < amount)
+            return false;
 
-		for (int i = _slots.Length - 1; i >= 0 && amount > 0; i--)
-		{
-			ItemStack stack = _slots[i];
-			if (stack == null || stack.Item != item) continue;
+        for (int i = _slots.Length - 1; i >= 0 && amount > 0; i--)
+        {
+            ItemStack stack = _slots[i];
+            if (stack == null || stack.Item != item)
+                continue;
 
-			int taken = Mathf.Min(amount, stack.Quantity);
-			stack.Quantity -= taken;
-			amount -= taken;
-			if (stack.Quantity == 0) _slots[i] = null;
-		}
+            int taken = Mathf.Min(amount, stack.Quantity);
+            stack.Quantity -= taken;
+            amount -= taken;
+            if (stack.Quantity == 0)
+                _slots[i] = null;
+        }
 
-		EmitSignal(SignalName.InventoryChanged);
-		return true;
-	}
+        EmitSignal(SignalName.InventoryChanged);
+        return true;
+    }
 
-	public bool HasItem(Item item) => CountOf(item) > 0;
+    public bool HasItem(Item item) => CountOf(item) > 0;
 
-	// Takes one item out of the slot before using it, so an item that swaps something back in
-	// (equipping over an occupied slot) always has room. If Use fails the item goes back.
-	public void UseItem(int index, Player player)
-	{
-		ItemStack stack = _slots[index];
-		if (stack == null) return;
+    // Takes one item out of the slot before using it, so an item that swaps something back in
+    // (equipping over an occupied slot) always has room. If Use fails the item goes back.
+    public void UseItem(int index, Player player)
+    {
+        ItemStack stack = _slots[index];
+        if (stack == null)
+            return;
 
-		Item item = stack.Item;
-		stack.Quantity--;
-		if (stack.Quantity == 0) _slots[index] = null;
+        Item item = stack.Item;
+        stack.Quantity--;
+        if (stack.Quantity == 0)
+            _slots[index] = null;
 
-		if (!item.Use(player))
-		{
-			if (_slots[index] == null) _slots[index] = new ItemStack(item, 1);
-			else _slots[index].Quantity++;
-		}
+        if (!item.Use(player))
+        {
+            if (_slots[index] == null)
+                _slots[index] = new ItemStack(item, 1);
+            else
+                _slots[index].Quantity++;
+        }
 
-		EmitSignal(SignalName.InventoryChanged);
-	}
+        EmitSignal(SignalName.InventoryChanged);
+    }
 
-	private int CountOf(Item item)
-	{
-		int count = 0;
-		foreach (ItemStack stack in _slots)
-		{
-			if (stack != null && stack.Item == item) count += stack.Quantity;
-		}
-		return count;
-	}
+    private int CountOf(Item item)
+    {
+        int count = 0;
+        foreach (ItemStack stack in _slots)
+        {
+            if (stack != null && stack.Item == item)
+                count += stack.Quantity;
+        }
+        return count;
+    }
 
-	private int FreeSpaceFor(Item item)
-	{
-		int space = 0;
-		foreach (ItemStack stack in _slots)
-		{
-			if (stack == null) space += item.MaxStack;
-			else if (stack.Item == item) space += item.MaxStack - stack.Quantity;
-		}
-		return space;
-	}
+    private int FreeSpaceFor(Item item)
+    {
+        int space = 0;
+        foreach (ItemStack stack in _slots)
+        {
+            if (stack == null)
+                space += item.MaxStack;
+            else if (stack.Item == item)
+                space += item.MaxStack - stack.Quantity;
+        }
+        return space;
+    }
 }

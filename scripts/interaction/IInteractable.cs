@@ -1,5 +1,5 @@
-using Godot;
 using System;
+using Godot;
 using ProjectREM.Characters;
 
 namespace ProjectREM.Interaction;
@@ -8,5 +8,5 @@ namespace ProjectREM.Interaction;
 // so the player can detect it.
 public interface IInteractable
 {
-	void Interact(Player player);
+    void Interact(Player player);
 }

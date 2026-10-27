@@ -7,16 +7,19 @@ namespace ProjectREM.Items;
 [GlobalClass]
 public partial class ItemStack : Resource
 {
-	[Export] public Item Item { get; set; }
-	[Export] public int Quantity { get; set; } = 1;
+    [Export]
+    public Item Item { get; set; }
 
-	public ItemStack() { }
+    [Export]
+    public int Quantity { get; set; } = 1;
 
-	public ItemStack(Item item, int quantity)
-	{
-		Item = item;
-		Quantity = quantity;
-	}
+    public ItemStack() { }
 
-	public bool IsFull() => Item != null && Quantity >= Item.MaxStack;
+    public ItemStack(Item item, int quantity)
+    {
+        Item = item;
+        Quantity = quantity;
+    }
+
+    public bool IsFull() => Item != null && Quantity >= Item.MaxStack;
 }

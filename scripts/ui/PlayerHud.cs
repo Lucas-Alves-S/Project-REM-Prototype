@@ -8,65 +8,73 @@ namespace ProjectREM.UI;
 // skewed HP bar and a stats line. The mockup's MAGIC bar is left out until there is a magic stat.
 public partial class PlayerHud : CanvasLayer
 {
-	// The HP bar eases to its new value like the mockup's `transition: width .12s linear`.
-	private const double BarTime = 0.12;
+    // The HP bar eases to its new value like the mockup's `transition: width .12s linear`.
+    private const double BarTime = 0.12;
 
-	[Export] public CharacterData Character { get; set; }
-	[Export] public string PortraitKey { get; set; } = "Calm";
+    [Export]
+    public CharacterData Character { get; set; }
 
-	private ProgressBar _hpBar;
-	private Label _stats;
-	private Player _player;
-	private Tween _tween;
+    [Export]
+    public string PortraitKey { get; set; } = "Calm";
 
-	public override void _Ready()
-	{
-		_hpBar = GetNode<ProgressBar>("%HpBar");
-		_stats = GetNode<Label>("%Stats");
+    private ProgressBar _hpBar;
+    private Label _stats;
+    private Player _player;
+    private Tween _tween;
 
-		if (Character != null && Character.Portraits.TryGetValue(PortraitKey, out Texture2D portrait))
-		{
-			GetNode<TextureRect>("%Face").Texture = portrait;
-		}
+    public override void _Ready()
+    {
+        _hpBar = GetNode<ProgressBar>("%HpBar");
+        _stats = GetNode<Label>("%Stats");
 
-		_player = GetTree().GetFirstNodeInGroup("player") as Player;
-		if (_player == null)
-		{
-			GD.PushError($"{Name}: no node in group 'player'.");
-			return;
-		}
+        if (
+            Character != null
+            && Character.Portraits.TryGetValue(PortraitKey, out Texture2D portrait)
+        )
+        {
+            GetNode<TextureRect>("%Face").Texture = portrait;
+        }
 
-		HealthComponent health = _player.Health;
-		_hpBar.MaxValue = health.MaxHealth;
-		_hpBar.Value = health.CurrentHealth;
+        _player = GetTree().GetFirstNodeInGroup("player") as Player;
+        if (_player == null)
+        {
+            GD.PushError($"{Name}: no node in group 'player'.");
+            return;
+        }
 
-		health.HealthChanged += OnHealthChanged;
-		_player.EquipmentChanged += UpdateStats;
-		UpdateStats();
-	}
+        HealthComponent health = _player.Health;
+        _hpBar.MaxValue = health.MaxHealth;
+        _hpBar.Value = health.CurrentHealth;
 
-	public override void _ExitTree()
-	{
-		if (!IsInstanceValid(_player)) return;
-		_player.Health.HealthChanged -= OnHealthChanged;
-		_player.EquipmentChanged -= UpdateStats;
-	}
+        health.HealthChanged += OnHealthChanged;
+        _player.EquipmentChanged += UpdateStats;
+        UpdateStats();
+    }
 
-	private void OnHealthChanged(int current, int max)
-	{
-		_hpBar.MaxValue = max;
-		_tween?.Kill();
-		_tween = CreateTween();
-		_tween.TweenProperty(_hpBar, "value", (double)current, BarTime);
-		UpdateStats();
-	}
+    public override void _ExitTree()
+    {
+        if (!IsInstanceValid(_player))
+            return;
+        _player.Health.HealthChanged -= OnHealthChanged;
+        _player.EquipmentChanged -= UpdateStats;
+    }
 
-	// Armor is shown while the damage formula is being tuned; the mockup has MAGIC here.
-	private void UpdateStats()
-	{
-		HealthComponent health = _player.Health;
-		int armor = _player.TotalArmor;
-		float reduction = DamageCalculator.ArmorReduction(armor, _player.ArmorConstant);
-		_stats.Text = $"HP {health.CurrentHealth}/{health.MaxHealth} · ARMOR {armor} (−{reduction:P0})";
-	}
+    private void OnHealthChanged(int current, int max)
+    {
+        _hpBar.MaxValue = max;
+        _tween?.Kill();
+        _tween = CreateTween();
+        _tween.TweenProperty(_hpBar, "value", (double)current, BarTime);
+        UpdateStats();
+    }
+
+    // Armor is shown while the damage formula is being tuned; the mockup has MAGIC here.
+    private void UpdateStats()
+    {
+        HealthComponent health = _player.Health;
+        int armor = _player.TotalArmor;
+        float reduction = DamageCalculator.ArmorReduction(armor, _player.ArmorConstant);
+        _stats.Text =
+            $"HP {health.CurrentHealth}/{health.MaxHealth} · ARMOR {armor} (−{reduction:P0})";
+    }
 }
